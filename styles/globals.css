@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.excerpt-img{
+    height: 436.5px;
+    width: 100%;
+}
+
+@font-face {
+    font-family: 'Aspira';
+    src: local('Aspira'), url(../assets/fonts/Aspira-Regular.otf) format('otf');
+}
+
+body {
+    font-family: 'Aspira', sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+html,
+body,
+body>div:first-child,
+div#__next,
+div#__next>div {
+    height: 100%;
+}
