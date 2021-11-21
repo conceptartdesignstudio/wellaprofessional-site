@@ -6,7 +6,7 @@ export default function Home({ products }) {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <Head>
-        <title>Wella Retails</title>
+        <title>Wella Professionals</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
