@@ -1,22 +1,43 @@
+/* Global  */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2rem;
+}
+
+.containerRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Products Information: Article, Img and Description */
 .productInfos {
     text-align: center;
-    margin: auto 3rem;
+    margin: auto 2rem;
+    max-width: 80rem;
 }
 
 .productInfos img {
-    -webkit-filter: drop-shadow(5px 5px 5px #222);
-    filter: drop-shadow(5px 5px 5px #222);
+    -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2));
+    max-width: 100%;
+    object-fit: contain;
 }
 
 .productInfos h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    line-height: 1.8rem;
+    line-height: 1.2rem;
 }
 
 .productInfos h4,
 .productInfos p {
-    font-size: 1rem;
+    font-size: .9rem;
 }
 
 .productInfos h4 {
@@ -30,34 +51,76 @@
     line-height: 1rem;
 }
 
+/* Links and Informative icons */
+
 .productSection {
-    margin: 1rem 3em;
+    margin: 0 2rem;
     display: flex;
+    justify-content: space-between;
+    align-content: center;
+    margin-top: 1rem;
 }
+
+@media only screen and (min-width: 1200px) {
+    .productSection {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 
 .productLinks {
-    display: flex;
-    flex-direction: row;
-    font-size: 1.2rem;
+    font-size: .8rem;
     text-transform: uppercase;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: .4rem;
+}
+
+.productLinks span {
+    display: inline-block;
+    vertical-align: center;
+    padding-top: .2rem;
+    margin-left: .2rem;
 
 }
+
+.productIcons {
+    margin-left: auto;
+}
+
+.productIcons ul li {
+    display: inline-block;
+}
+
+/* Footer: Brand Logo and Social Media Icons */
 
 .footer {
     text-align: center;
-    margin: auto 3rem;
-    padding-top: 1rem;
-    padding-bottom: 4rem;
+    padding: 0 3rem;
+    margin-top: 1rem;
 }
 
-.footer .social-medias {
+.footer img {
+    margin-bottom: 2rem;
+}
+
+.socialMedias {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: center;
-    margin-top: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
 }
 
 .footer a {
     margin: 0 1.5rem;
+}
+
+.footer svg {
+    width: 40px;
 }

@@ -11,7 +11,7 @@ export default function Home({ products }) {
       </Head>
 
       <main className="flex flex-col items-center flex-1 px-20 py-10">
-        <h1 className="text-6xl font-bold mt-5 mb-5">Wella Retails</h1>
+        <h1 className="text-6xl font-bold mt-5 mb-5">Wella Professionals</h1>
         <p className="text-xl  mb-5">WordPress as a Headless CMS with React</p>
         {products && (
           <div className="grid grid-cols-2 gap-5">
