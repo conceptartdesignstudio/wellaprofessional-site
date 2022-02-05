@@ -16,7 +16,7 @@ export default function product({
 }) {
   return (
     <div
-      className="flex flex-col items-stretch justify-center"
+      className="flex flex-col items-stretch"
       style={{ backgroundColor: colors.backgroundColor }}
     >
       <Head>

@@ -1,16 +1,3 @@
-.logo {
-  height: 80px;
-}
-
-.mainTitle {
-  color: #c8003c;
-  font-size: 2rem;
-  font-weight: 600;
-  margin-top: 2rem;
-  margin-bottom: 4rem;
-  text-transform: uppercase;
-}
-
 .productCard {
   text-align: center;
   padding: 0 2rem;
