@@ -1,0 +1,29 @@
+.logo {
+  height: 80px;
+}
+
+.mainTitle {
+  color: #c8003c;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  text-transform: uppercase;
+}
+
+.productCard {
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.productCard h2 {
+  color: rgb(86, 86, 86);
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.detailsBtn {
+  background-color: #c8003c;
+  color: #fff;
+  padding: 1rem 2rem;
+}

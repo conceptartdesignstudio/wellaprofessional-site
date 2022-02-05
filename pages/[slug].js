@@ -1,5 +1,4 @@
 import axios from "axios";
-import parse from "html-react-parser";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,7 +10,6 @@ export default function product({
   title,
   brandLogo,
   productImg,
-  container,
   content,
   colors,
   icons,
