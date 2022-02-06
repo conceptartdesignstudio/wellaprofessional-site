@@ -22,7 +22,7 @@ export default function product({
     >
       <Head>
         <title>{title}</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/wella.ico" />
       </Head>
 
       <div className={styles.content}>
