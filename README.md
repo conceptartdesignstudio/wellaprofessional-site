@@ -1,15 +1,19 @@
-# WordPress Headless CMS + NextJS 
+# Wella Professionals & Retails
 
 This repo contains the FrontEnd of an application that uses WordPress as a Headless CMS. 
+
+## Deploy Status
+
+Wella Professionals ([prowella.com.br](https://prowella.com.br))
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/056aa361-9231-4bd2-8503-f2b938800270/deploy-status)](https://app.netlify.com/sites/wella-professional/deploys)
+
+Wella Retails ([wellaretail.com.br](https://wellaretail.com.br))
 
 ## Built With
 
 - React (Next.js)
 - WordPress
-
-## Demo
-
-![picture-demo](./screenshot.png)
 
 ## Getting Started
 
@@ -40,20 +44,6 @@ yarn dev
 
 - Node^8.0
 
-
-## Authors
-
-👤 **Adebola**
-
-- Github: [@githubhandle](https://github.com/onedebos)
-- Twitter: [@twitterhandle](https://twitter.com/debosthefirst)
-- Linkedin: [linkedin](https://www.linkedin.com/in/adebola-niran/)
-
-
-## Acknowledgments
-
-Images by 
-- 
 
 ## 📝 License
 
