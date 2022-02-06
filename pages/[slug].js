@@ -8,7 +8,6 @@ import ProductBrand from '../components/ProductBrand';
 
 export default function product({
   title,
-  brandLogo,
   brandName,
   content,
   colors,
@@ -540,7 +539,6 @@ export async function getStaticProps({ params }) {
   const res = await axios.get(`${process.env.NEXT_PUBLIC_WELLA_ENV_API}?slug=${params.slug}`);
   const data = await res.data;
   const product = data[0];
-  const brandLogo = await getBrandLogo(product.acf.brand_logo);
   const productImg = await getFeaturedImage(product.acf.product_image);
   const container = "max-w-5xl";
   const isProductPage = true;
@@ -550,7 +548,6 @@ export async function getStaticProps({ params }) {
       isProductPage,
       title: product.title.rendered,
       brandName: product.acf.selected_product_brand,
-      brandLogo,
       container,
       content: {
         productName: product.acf.product_name,
