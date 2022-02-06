@@ -4,17 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { getFeaturedImage, getBrandLogo } from "../lib/utils";
 import styles from "../styles/Product.module.css";
+import ProductBrand from '../components/ProductBrand';
 
 export default function product({
   title,
   brandLogo,
+  brandName,
   content,
   colors,
   displayRules,
   icons,
   productImg,
 }) {
-  console.log(displayRules);
   return (
     <div
       className={styles.wrapper}
@@ -425,13 +426,8 @@ export default function product({
           className={styles.footer}
           style={{ backgroundColor: colors.backgroundColor }}
         >
-          <Image
-            className="brand-logo"
-            src={brandLogo}
-            alt="Brand Logo"
-            width={100}
-            height={54}
-          />
+          <ProductBrand brandName={brandName} key={brandName} />
+
           <div className={styles.socialMedias}>
             <div className="wrapper">
               {displayRules.instagram ? (
@@ -553,6 +549,7 @@ export async function getStaticProps({ params }) {
     props: {
       isProductPage,
       title: product.title.rendered,
+      brandName: product.acf.selected_product_brand,
       brandLogo,
       container,
       content: {
