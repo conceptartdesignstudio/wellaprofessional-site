@@ -5,20 +5,20 @@ export default function ProductBrand({brandName}) {
     {
       name: "wella",
       image: "/wella.png",
-      width: "150",
+      width: "100",
       height: "54",
     },
     {
       name: "wellapro",
       image: "/wellapro.png",
       width: "100",
-      height: "95",
+      height: "62",
     },
     {
       name: "sebastian",
       image: "/sebastian.png",
       width: "200",
-      height: "36",
+      height: "46",
     },
     {
       name: "nioxin",
@@ -47,11 +47,11 @@ export default function ProductBrand({brandName}) {
       {filteredBrand.map((brand) => (
         <Image
           className="brand-logo"
-          src={brand.image}
           alt="Brand Logo"
+          key={brand.image}
+          src={brand.image}
           width={brand.width}
           height={brand.height}
-          key={brand.image}
         />
       ))}
     </>
