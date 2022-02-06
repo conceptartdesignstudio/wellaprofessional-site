@@ -2,10 +2,7 @@ module.exports = {
   reactStrictMode: false,
   future: { webpack5: true },
   images: {
-    domains: [
-      "localhost",
-      "pro.sistemawca.com.br",
-    ],
+    domains: ["localhost", process.env.NEXT_PUBLIC_WELLA_ENV],
   },
   plugins: [
     [
