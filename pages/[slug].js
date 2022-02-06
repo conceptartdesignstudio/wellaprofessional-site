@@ -2,7 +2,6 @@ import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { PRODUCTS_API_URL } from "../lib/constants";
 import { getFeaturedImage, getBrandLogo } from "../lib/utils";
 import styles from "../styles/Product.module.css";
 
@@ -520,7 +519,7 @@ export default function product({
 
 // This function gets called at build time
 export async function getStaticPaths() {
-  const res = await axios.get(PRODUCTS_API_URL);
+  const res = await axios.get(process.env.NEXT_PUBLIC_WELLA_ENV_API);
   const products = res.data;
 
   // Get the paths we want to pre-render based on products
@@ -534,7 +533,9 @@ export async function getStaticPaths() {
 
 // This also gets called at build time
 export async function getStaticProps({ params }) {
-  const res = await axios.get(`${PRODUCTS_API_URL}?slug=${params.slug}`);
+  const res = await axios.get(
+    `${process.env.NEXT_PUBLIC_WELLA_ENV_API}?slug=${params.slug}`
+  );
   const data = await res.data;
   const product = data[0];
   const brandLogo = await getBrandLogo(product.acf.brand_logo);
