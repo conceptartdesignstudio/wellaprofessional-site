@@ -9,7 +9,7 @@ export default function Home({ products }) {
     <>
       <Head>
         <title className={styles.mainTitle}>Wella Professionals</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/wella.ico" />
       </Head>
 
       <main className="px-20 py-10 mb-5">
