@@ -84,7 +84,6 @@
     }
 }
 
-
 .productLinks {
     font-size: .8rem;
     text-transform: uppercase;
@@ -95,12 +94,18 @@
     margin-top: .4rem;
 }
 
-.productLinks span {
+.productLinks span,
+.productLinks button {
     display: inline-block;
     vertical-align: center;
     padding-top: .2rem;
     margin-left: .2rem;
+    text-transform: uppercase;
+}
 
+.productLinks button {
+  padding-top: 0;
+  font-weight: 700;
 }
 
 .productIcons {
@@ -139,3 +144,27 @@
 .footer svg {
     width: 40px;
 }
+
+.accordionInfos {
+  text-align: center;
+  margin: auto 2rem;
+  max-width: 80rem;
+}
+
+@media only screen and (min-width: 1280px) {
+  .accordionInfos {
+    margin: auto!important;
+  }
+}
+
+.accordionVideo {
+  width: 100% !important;
+  margin: auto;
+}
+
+.accordionText {
+  text-align: justify;
+  line-height: 1rem;
+  margin: 3rem 0;
+}
+
