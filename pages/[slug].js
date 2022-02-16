@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getFeaturedImage, getBrandLogo } from "../lib/utils";
 import styles from "../styles/Product.module.css";
 import ProductBrand from '../components/ProductBrand';
+import LearnMore from "../components/LearnMore";
 
 export default function product({
   title,
@@ -50,28 +51,8 @@ export default function product({
           className={styles.productSection}
           style={{ backgroundColor: colors.backgroundColor }}
         >
-          <div className={styles.productLinks}>
-            <svg
-              style={{ fill: colors.moreColor }}
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="22px"
-              height="22px"
-            >
-              <path d="M 12 2 C 6.4889971 2 2 6.4889971 2 12 C 2 17.511003 6.4889971 22 12 22 C 17.511003 22 22 17.511003 22 12 C 22 6.4889971 17.511003 2 12 2 z M 12 4 C 16.430123 4 20 7.5698774 20 12 C 20 16.430123 16.430123 20 12 20 C 7.5698774 20 4 16.430123 4 12 C 4 7.5698774 7.5698774 4 12 4 z M 11 7 L 11 11 L 7 11 L 7 13 L 11 13 L 11 17 L 13 17 L 13 13 L 17 13 L 17 11 L 13 11 L 13 7 L 11 7 z" />
-            </svg>
-            <span>
-              <Link href={content.link}>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ color: colors.moreColor }}
-                >
-                  Saiba mais
-                </a>
-              </Link>
-            </span>
-          </div>
+          <LearnMore displayRules={displayRules} learnMore={content.learnMore} colors={colors} key="learnMore" />
+
           <div className={styles.productIcons}>
             <ul key="newIcons">
               {icons.eac ? (
@@ -552,7 +533,11 @@ export async function getStaticProps({ params }) {
       content: {
         productName: product.acf.product_name,
         ingredients: product.acf.ingredients,
-        link: product.acf.more_infos,
+        learnMore: {
+          link: product.acf.more_infos,
+          text: product.acf.more_text,
+          video: product.acf.more_video,
+        },
         socialMedias: {
           instagram: product.acf.instagram,
           facebook: product.acf.facebook,
@@ -571,6 +556,8 @@ export async function getStaticProps({ params }) {
         facebook: product.acf.display_facebook,
         instagram: product.acf.display_instagram,
         youtube: product.acf.display_youtube,
+        learnLink: product.acf.display_learn_more_link,
+        learnVideo: product.acf.display_learn_more,
       },
       icons: {
         eac: product.acf.eac,
