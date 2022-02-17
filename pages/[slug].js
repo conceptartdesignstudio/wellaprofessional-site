@@ -24,6 +24,7 @@ export default function product({
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/wella.ico" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
       <div className={styles.content}>
@@ -47,12 +48,13 @@ export default function product({
             <p style={{ color: colors.textColor }}>{content.ingredients}</p>
           </article>
         </section>
-        <ProductSection 
+        <ProductSection
           displayRules={displayRules}
           learnMore={content.learnMore}
           colors={colors}
           icons={icons}
-          key="ProductSection" />
+          key="ProductSection"
+        />
         <section
           className={styles.footer}
           style={{ backgroundColor: colors.backgroundColor }}
