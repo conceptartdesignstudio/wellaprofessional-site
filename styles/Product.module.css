@@ -159,6 +159,7 @@
 
 .accordionVideo {
   width: 100% !important;
+  height: 300px !important;
   margin: auto;
 }
 
@@ -166,5 +167,18 @@
   text-align: justify;
   line-height: 1rem;
   margin: 3rem 0;
+}
+
+.accordionHeading {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.2rem;
+}
+
+@media only screen and (min-width: 1280px) {
+  .accordionHeading {
+    margin-top: 3rem;
+  }
 }
 

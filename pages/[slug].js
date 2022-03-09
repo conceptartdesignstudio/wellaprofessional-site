@@ -188,6 +188,7 @@ export async function getStaticProps({ params }) {
         ingredients: product.acf.ingredients,
         learnMore: {
           link: product.acf.more_infos,
+          heading: product.acf.more_heading,
           text: product.acf.more_text,
           video: product.acf.more_video,
         },

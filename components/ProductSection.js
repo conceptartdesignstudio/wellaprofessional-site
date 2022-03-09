@@ -70,6 +70,12 @@ export default function ProductSection({ displayRules, learnMore, colors, icons 
               playing={isExpanded}
               controls={true}
             />
+            <h2
+              className={styles.accordionHeading}
+              style={{ color: colors.titleColor }}
+            >
+              {learnMore.heading}
+            </h2>
             <div
               className={styles.accordionText}
               style={{ color: colors.textColor }}
