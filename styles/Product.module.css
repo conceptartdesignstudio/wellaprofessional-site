@@ -81,9 +81,9 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        margin: 0 12.5rem;
     }
 }
-
 
 .productLinks {
     font-size: .8rem;
@@ -95,12 +95,18 @@
     margin-top: .4rem;
 }
 
-.productLinks span {
+.productLinks span,
+.productLinks button {
     display: inline-block;
     vertical-align: center;
     padding-top: .2rem;
     margin-left: .2rem;
+    text-transform: uppercase;
+}
 
+.productLinks button {
+  padding-top: 0;
+  font-weight: 700;
 }
 
 .productIcons {
@@ -139,3 +145,41 @@
 .footer svg {
     width: 40px;
 }
+
+.accordionInfos {
+  text-align: center;
+  margin: auto 2rem;
+  max-width: 80rem;
+}
+
+@media only screen and (min-width: 1280px) {
+  .accordionInfos {
+    margin: auto!important;
+  }
+}
+
+.accordionVideo {
+  width: 100% !important;
+  height: 300px !important;
+  margin: auto;
+}
+
+.accordionText {
+  text-align: justify;
+  line-height: 1rem;
+  margin: 3rem 0;
+}
+
+.accordionHeading {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.2rem;
+}
+
+@media only screen and (min-width: 1280px) {
+  .accordionHeading {
+    margin-top: 3rem;
+  }
+}
+

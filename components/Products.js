@@ -34,6 +34,7 @@ export default function product({ product }) {
           <img
             className="mb-5"
             src={productImg ? productImg.featImgUrl : "/aeeiee-logo.png"}
+            alt="Product Image"
           />
           <h2>{product.title.rendered}</h2>
         </a>
