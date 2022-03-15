@@ -16,6 +16,7 @@ export default function product({
   icons,
   productImg,
 }) {
+  console.log(icons);
   return (
     <div
       className={styles.wrapper}
@@ -173,6 +174,7 @@ export async function getStaticProps({ params }) {
   const res = await axios.get(`${process.env.NEXT_PUBLIC_WELLA_ENV_API}?slug=${params.slug}`);
   const data = await res.data;
   const product = data[0];
+  console.log(product.acf);
   const productImg = await getFeaturedImage(product.acf.product_image);
   const container = "max-w-5xl";
   const isProductPage = true;
@@ -220,6 +222,9 @@ export async function getStaticProps({ params }) {
         book: product.acf.book,
         dozeM: product.acf.dozeM,
         descartavel: product.acf.descartavel,
+        lixeira: product.acf.lixeira,
+        pp: product.acf.pp,
+        pead: product.acf.pead,
       },
       productImg,
     },
