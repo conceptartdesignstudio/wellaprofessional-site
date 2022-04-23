@@ -52,6 +52,7 @@ export default function ProductBrand({brandName}) {
           src={brand.image}
           width={brand.width}
           height={brand.height}
+          priority
         />
       ))}
     </>

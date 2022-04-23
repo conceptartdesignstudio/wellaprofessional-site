@@ -39,6 +39,7 @@ export default function product({
               alt="Product Image"
               width={150}
               height={150}
+              priority
             />
             <h1
               className="productName"

@@ -11,6 +11,7 @@ export default function Home({ products }) {
         <Head>
           <title className={styles.mainTitle}>Wella Professionals</title>
           <link rel="icon" href="/wella.ico" />
+          <link rel="preload" href="late_discovered_thing.js" as="script"></link>
           <meta
             name="viewport"
             content="initial-scale=1.0, width=device-width"
