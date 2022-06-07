@@ -167,12 +167,12 @@ export async function getStaticPaths() {
   }));
 
   // We'll pre-render only these paths at build time.
-  return { paths, fallback: true };
+  return { paths, fallback: false };
 }
 
 // This also gets called at build time
 export async function getStaticProps({ params }) {
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_WELLA_ENV_API}?slug=${params.slug}`);
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_WELLA_ENV_API_POST}?slug=${params.slug}`);
   const data = await res.data;
   const product = data[0];
   console.log(product.acf);
