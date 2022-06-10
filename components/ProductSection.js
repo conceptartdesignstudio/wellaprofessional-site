@@ -62,9 +62,8 @@ export default function ProductSection({ displayRules, learnMore, colors, icons 
         <Icons icons={icons} colors={colors} key="informative-icons" />
       </section>
 
-      {displayRules.learnVideo ? (
-      <section className={styles.accordionInfos} >
-          <section className="accordion" {...getCollapseProps()}>
+      <section className={styles.accordionInfos} {...getCollapseProps()} >
+          <section className="accordion">
             <ReactPlayer
               className={styles.accordionVideo}
               url={learnMore.video}
@@ -85,7 +84,6 @@ export default function ProductSection({ displayRules, learnMore, colors, icons 
             </div>
           </section>
       </section>
-      ) : null}
     </>
   );
 }
