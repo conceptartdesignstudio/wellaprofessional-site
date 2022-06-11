@@ -2,10 +2,11 @@ import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { getFeaturedImage, getBrandLogo } from "../lib/utils";
+import { getFeaturedImage } from "../lib/utils";
 import styles from "../styles/Product.module.css";
 import ProductBrand from '../components/ProductBrand';
 import ProductSection from "../components/ProductSection";
+import { getAllProductsWithSlug, getProduct } from "../lib/api";
 
 export default function product({
   title,
@@ -16,7 +17,6 @@ export default function product({
   icons,
   productImg,
 }) {
-  console.log(icons);
   return (
     <div
       className={styles.wrapper}
@@ -158,76 +158,69 @@ export default function product({
 
 // This function gets called at build time
 export async function getStaticPaths() {
-  const res = await axios.get(process.env.NEXT_PUBLIC_WELLA_ENV_API);
-  const products = res.data;
+  const productsWithSlug = await getAllProductsWithSlug();
 
-  // Get the paths we want to pre-render based on products
-  const paths = products.map((product) => ({
-    params: { slug: product.slug.toString() },
-  }));
-
-  // We'll pre-render only these paths at build time.
-  return { paths, fallback: false };
+  return {
+    paths: productsWithSlug.edges.map(({node}) => `/${node.slug}`) || [],
+    fallback: false,
+  }
 }
 
 // This also gets called at build time
 export async function getStaticProps({ params }) {
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_WELLA_ENV_API_POST}?slug=${params.slug}`);
-  const data = await res.data;
-  const product = data[0];
-  console.log(product.acf);
-  const productImg = await getFeaturedImage(product.acf.product_image);
+  const { wellaProfessional } = await getProduct(params.slug);
+  console.log(wellaProfessional);
   const container = "max-w-5xl";
   const isProductPage = true;
 
   return {
     props: {
       isProductPage,
-      title: product.title.rendered,
-      brandName: product.acf.selected_product_brand,
+      title: wellaProfessional.title,
+      brandName: wellaProfessional.products.selectedProductBrand,
       container,
       content: {
-        productName: product.acf.product_name,
-        ingredients: product.acf.ingredients,
+        productName: wellaProfessional.products.productName,
+        ingredients: wellaProfessional.products.ingredients,
         learnMore: {
-          link: product.acf.more_infos,
-          heading: product.acf.more_heading,
-          text: product.acf.more_text,
-          video: product.acf.more_video,
+          heading: wellaProfessional.products.moreHeading,
+          link: wellaProfessional.products.moreInfos,
+          text: wellaProfessional.products.moreText,
+          video: wellaProfessional.products.moreVideo,
         },
         socialMedias: {
-          instagram: product.acf.instagram,
-          facebook: product.acf.facebook,
-          youtube: product.acf.youtube,
+          facebook: wellaProfessional.products.facebook,
+          instagram: wellaProfessional.products.instagram,
+          youtube: wellaProfessional.products.youtube,
         },
       },
       colors: {
-        backgroundColor: product.acf.background_color,
-        titleColor: product.acf.product_name_color,
-        textColor: product.acf.product_inci_color,
-        moreColor: product.acf.more_color,
-        socialMediaColor: product.acf.social_media_color,
-        informativeColor: product.acf.informative_icons_color,
+        backgroundColor: wellaProfessional.products.backgroundColor,
+        informativeColor: wellaProfessional.products.informativeIconsColor,
+        moreColor: wellaProfessional.products.moreColor,
+        socialMediaColor: wellaProfessional.products.socialMediaColor,
+        textColor: wellaProfessional.products.productInciColor,
+        titleColor: wellaProfessional.products.productNameColor,
       },
       displayRules: {
-        facebook: product.acf.display_facebook,
-        instagram: product.acf.display_instagram,
-        youtube: product.acf.display_youtube,
-        learnLink: product.acf.display_learn_more_link,
-        learnVideo: product.acf.display_learn_more,
+        facebook: wellaProfessional.products.displayFacebook,
+        instagram: wellaProfessional.products.displayInstagram,
+        youtube: wellaProfessional.products.displayYoutube,
+        learnLink: wellaProfessional.products.displayLearnMoreLink,
+        learnVideo: wellaProfessional.products.displayLearnMore,
       },
       icons: {
-        eac: product.acf.eac,
-        reciclagem: product.acf.reciclagem,
-        retornavel: product.acf.retornavel,
-        book: product.acf.book,
-        dozeM: product.acf.dozeM,
-        descartavel: product.acf.descartavel,
-        lixeira: product.acf.lixeira,
-        pp: product.acf.pp,
-        pead: product.acf.pead,
+        eac: wellaProfessional.products.eac,
+        reciclagem: wellaProfessional.products.reciclagem,
+        retornavel: wellaProfessional.products.retornavel,
+        book: wellaProfessional.products.book,
+        dozeM: wellaProfessional.products.dozem,
+        descartavel: wellaProfessional.products.descartavel,
+        lixeira: wellaProfessional.products.lixeira,
+        pp: wellaProfessional.products.pp,
+        pead: wellaProfessional.products.pead,
       },
-      productImg,
+      productImg: wellaProfessional.products.productImage.mediaItemUrl
     },
   };
 };
