@@ -169,7 +169,6 @@ export async function getStaticPaths() {
 // This also gets called at build time
 export async function getStaticProps({ params }) {
   const { wellaProfessional } = await getProduct(params.slug);
-  console.log(wellaProfessional);
   const container = "max-w-5xl";
   const isProductPage = true;
 

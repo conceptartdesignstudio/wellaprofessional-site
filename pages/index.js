@@ -38,7 +38,6 @@ export default Blog;
 export async function getStaticProps() {
   const { edges } = await getAllProducts();
 
-  console.log(edges);
   return {
     props: {
       edges,
