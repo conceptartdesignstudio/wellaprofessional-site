@@ -1,39 +1,47 @@
-import Head from 'next/head';
+import Head from "next/head";
 import Header from "../components/Header";
-import Products from '../components/Products';
-import Footer from '../components/Footer';
+import Products from "../components/Products";
+import Footer from "../components/Footer";
 import styles from "../styles/Main.module.css";
+import { getAllProducts } from "../lib/api";
+import Link from "next/link";
 
-export default function Home({ products }) {
-  return (
-    <>
-      <html lang="pt-BR">
-        <Head>
-          <title className={styles.mainTitle}>Wella Professionals</title>
-          <link rel="icon" href="/wella.ico" />
-          <link rel="preload" href="late_discovered_thing.js" as="script"></link>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
-        </Head>
+const Blog = ({ edges }) => (
+  <div className="">
+    <Head>
+      <title className={styles.mainTitle}>Wella Professionals</title>
+      <link rel="icon" href="/wella.ico" />
+      <link rel="preload" href="late_discovered_thing.js" as="script"></link>
+      <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    </Head>
 
-        <main className="px-20 py-10 mb-5">
-          <Header />
-          {products && (
-            <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
-              {products.map((product, slug) => {
-                return (
-                  <div key={slug}>
-                    <Products product={product} />
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </main>
-        <Footer />
-      </html>
-    </>
-  );
+    <main className="px-20 py-10 mb-5">
+      <Header />
+      <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
+        {edges.map(({ node }) => (
+          <div key={node.slug} >
+            <Products 
+              product={node.products.productName} 
+              slug={node.slug} 
+              image={node.products.productImage.mediaItemUrl}
+            />
+          </div>
+        ))}
+      </div>
+      <Footer />
+    </main>
+  </div>
+);
+
+export default Blog;
+
+export async function getStaticProps() {
+  const { edges } = await getAllProducts();
+
+  console.log(edges);
+  return {
+    props: {
+      edges,
+    },
+  };
 }
