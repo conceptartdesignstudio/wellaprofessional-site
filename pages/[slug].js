@@ -1,8 +1,6 @@
-import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { getFeaturedImage } from "../lib/utils";
 import styles from "../styles/Product.module.css";
 import ProductBrand from '../components/ProductBrand';
 import ProductSection from "../components/ProductSection";
