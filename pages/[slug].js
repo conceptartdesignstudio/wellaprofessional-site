@@ -1,20 +1,17 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import styles from "../styles/Product.module.css";
-import ProductBrand from '../components/ProductBrand';
-import ProductSection from "../components/ProductSection";
-import { getAllProductsWithSlug, getProduct } from "../lib/api";
+import Head from 'next/head'
+import styles from '../styles/Product.module.css'
+import { getAllProductsWithSlug, getProduct } from '../lib/api'
+import Facebook from '../components/Icons/Facebook'
+import Instagram from '../components/Icons/Instagram'
+import ProductBrand from '../components/ProductBrand'
+import ProductContent from '../components/ProductContent'
+import ProductSection from '../components/ProductSection'
+import Youtube from '../components/Icons/Youtube'
 
-export default function product({
-  title,
-  brandName,
-  content,
-  colors,
-  displayRules,
-  icons,
-  productImg,
-}) {
+export default function product(props) {
+  const { title, brandName, content, colors, displayRules, icons, productImg } =
+    props
+
   return (
     <div
       className={styles.wrapper}
@@ -27,27 +24,12 @@ export default function product({
       </Head>
 
       <div className={styles.content}>
-        <section
-          className={styles.container}
-          style={{ backgroundColor: colors.backgroundColor }}
-        >
-          <article className={styles.productInfos}>
-            <Image
-              src={productImg}
-              alt="Product Image"
-              width={150}
-              height={150}
-              priority
-            />
-            <h1
-              className="productName"
-              style={{ color: colors.titleColor }}
-              dangerouslySetInnerHTML={{ __html: content.productName }}
-            ></h1>
-            <h4 style={{ color: colors.textColor }}>Ingredientes:</h4>
-            <p style={{ color: colors.textColor }}>{content.ingredients}</p>
-          </article>
-        </section>
+        <ProductContent
+          productName={content.productName}
+          productImage={productImg}
+          productDescription={content.ingredients}
+          colors={colors}
+        />
         <ProductSection
           displayRules={displayRules}
           learnMore={content.learnMore}
@@ -64,111 +46,48 @@ export default function product({
           <div className={styles.socialMedias}>
             <div className="wrapper">
               {displayRules.instagram ? (
-                <Link href={content.socialMedias.instagram}>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ color: colors.socialMediaColor }}
-                  >
-                    <svg
-                      style={{ fill: colors.socialMediaColor }}
-                      width="35px"
-                      height="35px"
-                      aria-hidden="true"
-                      focusable="false"
-                      data-prefix="fab"
-                      data-icon="instagram-square"
-                      role="img"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 448 512"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M224,202.66A53.34,53.34,0,1,0,277.36,256,53.38,53.38,0,0,0,224,202.66Zm124.71-41a54,54,0,0,0-30.41-30.41c-21-8.29-71-6.43-94.3-6.43s-73.25-1.93-94.31,6.43a54,54,0,0,0-30.41,30.41c-8.28,21-6.43,71.05-6.43,94.33S91,329.26,99.32,350.33a54,54,0,0,0,30.41,30.41c21,8.29,71,6.43,94.31,6.43s73.24,1.93,94.3-6.43a54,54,0,0,0,30.41-30.41c8.35-21,6.43-71.05,6.43-94.33S357.1,182.74,348.75,161.67ZM224,338a82,82,0,1,1,82-82A81.9,81.9,0,0,1,224,338Zm85.38-148.3a19.14,19.14,0,1,1,19.13-19.14A19.1,19.1,0,0,1,309.42,189.74ZM400,32H48A48,48,0,0,0,0,80V432a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V80A48,48,0,0,0,400,32ZM382.88,322c-1.29,25.63-7.14,48.34-25.85,67s-41.4,24.63-67,25.85c-26.41,1.49-105.59,1.49-132,0-25.63-1.29-48.26-7.15-67-25.85s-24.63-41.42-25.85-67c-1.49-26.42-1.49-105.61,0-132,1.29-25.63,7.07-48.34,25.85-67s41.47-24.56,67-25.78c26.41-1.49,105.59-1.49,132,0,25.63,1.29,48.33,7.15,67,25.85s24.63,41.42,25.85,67.05C384.37,216.44,384.37,295.56,382.88,322Z"
-                      ></path>
-                    </svg>
-                  </a>
-                </Link>
+                <Instagram
+                  link={content.socialMedias.instagram}
+                  selectedColor={colors.socialMediaColor}
+                />
               ) : null}
 
               {displayRules.facebook ? (
-                <Link href={content.socialMedias.facebook}>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ color: colors.socialMediaColor }}
-                  >
-                    <svg
-                      style={{ fill: colors.socialMediaColor }}
-                      width="35px"
-                      height="35px"
-                      aria-hidden="true"
-                      focusable="false"
-                      data-prefix="fab"
-                      data-icon="facebook-square"
-                      role="img"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 448 512"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"
-                      ></path>
-                    </svg>
-                  </a>
-                </Link>
+                <Facebook
+                  link={content.socialMedias.instagram}
+                  selectedColor={colors.socialMediaColor}
+                />
               ) : null}
 
               {displayRules.youtube ? (
-                <Link href={content.socialMedias.youtube}>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ color: colors.socialMediaColor }}
-                  >
-                    <svg
-                      style={{ fill: colors.socialMediaColor }}
-                      width="35px"
-                      height="35px"
-                      aria-hidden="true"
-                      focusable="false"
-                      data-prefix="fab"
-                      data-icon="youtube-square"
-                      role="img"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 448 512"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"
-                      ></path>
-                    </svg>
-                  </a>
-                </Link>
+                <Youtube
+                  link={content.socialMedias.instagram}
+                  selectedColor={colors.socialMediaColor}
+                />
               ) : null}
             </div>
           </div>
         </section>
       </div>
     </div>
-  );
+  )
 }
 
 // This function gets called at build time
 export async function getStaticPaths() {
-  const productsWithSlug = await getAllProductsWithSlug();
+  const productsWithSlug = await getAllProductsWithSlug()
 
   return {
-    paths: productsWithSlug.edges.map(({node}) => `/${node.slug}`) || [],
-    fallback: false,
+    paths: productsWithSlug.edges.map(({ node }) => `/${node.slug}`) || [],
+    fallback: false
   }
 }
 
 // This also gets called at build time
 export async function getStaticProps({ params }) {
-  const { wellaProfessional } = await getProduct(params.slug);
-  const container = "max-w-5xl";
-  const isProductPage = true;
+  const { wellaProfessional } = await getProduct(params.slug)
+  const container = 'max-w-5xl'
+  const isProductPage = true
 
   return {
     props: {
@@ -183,13 +102,13 @@ export async function getStaticProps({ params }) {
           heading: wellaProfessional.products.moreHeading,
           link: wellaProfessional.products.moreInfos,
           text: wellaProfessional.products.moreText,
-          video: wellaProfessional.products.moreVideo,
+          video: wellaProfessional.products.moreVideo
         },
         socialMedias: {
           facebook: wellaProfessional.products.facebook,
           instagram: wellaProfessional.products.instagram,
-          youtube: wellaProfessional.products.youtube,
-        },
+          youtube: wellaProfessional.products.youtube
+        }
       },
       colors: {
         backgroundColor: wellaProfessional.products.backgroundColor,
@@ -197,14 +116,14 @@ export async function getStaticProps({ params }) {
         moreColor: wellaProfessional.products.moreColor,
         socialMediaColor: wellaProfessional.products.socialMediaColor,
         textColor: wellaProfessional.products.productInciColor,
-        titleColor: wellaProfessional.products.productNameColor,
+        titleColor: wellaProfessional.products.productNameColor
       },
       displayRules: {
         facebook: wellaProfessional.products.displayFacebook,
         instagram: wellaProfessional.products.displayInstagram,
         youtube: wellaProfessional.products.displayYoutube,
         learnLink: wellaProfessional.products.displayLearnMoreLink,
-        learnVideo: wellaProfessional.products.displayLearnMore,
+        learnVideo: wellaProfessional.products.displayLearnMore
       },
       icons: {
         eac: wellaProfessional.products.eac,
@@ -215,9 +134,9 @@ export async function getStaticProps({ params }) {
         descartavel: wellaProfessional.products.descartavel,
         lixeira: wellaProfessional.products.lixeira,
         pp: wellaProfessional.products.pp,
-        pead: wellaProfessional.products.pead,
+        pead: wellaProfessional.products.pead
       },
       productImg: wellaProfessional.products.productImage.mediaItemUrl
-    },
-  };
-};
+    }
+  }
+}
