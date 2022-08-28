@@ -1,7 +1,7 @@
-import styles from '../styles/Product.module.css'
+import styles from '../../styles/Product.module.css'
 import Image from 'next/image'
 
-const ProductContent = ({
+export const ProductContent = ({
   productImage,
   productName,
   productDescription,
@@ -33,5 +33,3 @@ const ProductContent = ({
     </>
   )
 }
-
-export default ProductContent

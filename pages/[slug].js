@@ -1,14 +1,14 @@
 import Head from 'next/head'
 import styles from '../styles/Product.module.css'
 import { getAllProductsWithSlug, getProduct } from '../lib/api'
-import Facebook from '../components/Icons/Facebook'
-import Instagram from '../components/Icons/Instagram'
-import ProductBrand from '../components/ProductBrand'
-import ProductContent from '../components/ProductContent'
-import ProductSection from '../components/ProductSection'
-import Youtube from '../components/Icons/Youtube'
+import { Facebook } from '../components/Icons/Facebook'
+import { Instagram } from '../components/Icons/Instagram'
+import { ProductBrand } from '../components/SingleProduct/ProductBrand'
+import { ProductContent } from '../components/SingleProduct/ProductContent'
+import { ProductSection } from '../components/ProductSection'
+import { Youtube } from '../components/Icons/Youtube'
 
-export default function product(props) {
+const Product = (props) => {
   const { title, brandName, content, colors, displayRules, icons, productImg } =
     props
 
@@ -140,3 +140,5 @@ export async function getStaticProps({ params }) {
     }
   }
 }
+
+export default Product

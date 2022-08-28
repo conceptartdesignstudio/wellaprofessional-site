@@ -1,9 +1,9 @@
-import styles from '../styles/Product.module.css'
+import styles from '@/styles/Product.module.css'
 import Link from 'next/link'
 import useCollapse from 'react-collapsed'
 import ReactPlayer from 'react-player/lazy'
 
-export default function LearnMore({ displayRules, learnMore, colors, icons }) {
+export const LearnMore = ({ displayRules, learnMore, colors, icons }) => {
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse({
     defaultExpanded: false
   })

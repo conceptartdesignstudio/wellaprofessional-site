@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const Youtube = ({ link, selectedColor }) => {
+export const Youtube = ({ link, selectedColor }) => {
   return (
     <>
       <Link href={link}>
@@ -27,5 +27,3 @@ const Youtube = ({ link, selectedColor }) => {
     </>
   )
 }
-
-export default Youtube

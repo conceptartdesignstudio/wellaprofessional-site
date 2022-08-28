@@ -1,12 +1,11 @@
-import Head from 'next/head'
-import Header from '../components/Header'
-import Products from '../components/Products'
-import Footer from '../components/Footer'
 import styles from '../styles/Main.module.css'
+import Head from 'next/head'
 import { getAllProducts } from '../lib/api'
-import Link from 'next/link'
+import { Header } from '../components/Header'
+import { Products } from '../components/Products'
+import { Footer } from '../components/Footer'
 
-const Blog = ({ edges }) => (
+const HomePage = ({ edges }) => (
   <div className="">
     <Head>
       <title className={styles.mainTitle}>Wella Professionals</title>
@@ -17,7 +16,7 @@ const Blog = ({ edges }) => (
 
     <main className="md:px-20 py-10 mb-5">
       <Header />
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-5 mt-10">
         {edges.map(({ node }) => (
           <div key={node.slug}>
             <Products
@@ -33,8 +32,6 @@ const Blog = ({ edges }) => (
   </div>
 )
 
-export default Blog
-
 export async function getStaticProps() {
   const { edges } = await getAllProducts()
 
@@ -44,3 +41,5 @@ export async function getStaticProps() {
     }
   }
 }
+
+export default HomePage

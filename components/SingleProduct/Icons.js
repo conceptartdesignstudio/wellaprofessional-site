@@ -1,6 +1,6 @@
-import styles from '../styles/Product.module.css'
+import styles from '../../styles/Product.module.css'
 
-export default function Icons({ colors, icons }) {
+export const Icons = ({ colors, icons }) => {
   return (
     <>
       <div className={styles.productIcons}>

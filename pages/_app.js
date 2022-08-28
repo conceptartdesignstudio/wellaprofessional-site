@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import { useState, useEffect } from 'react'
 
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     async function fetchData() {
       if (pageProps) {
@@ -12,7 +12,9 @@ function MyApp({ Component, pageProps }) {
         document.body.style.background = backgroundColor
       }
     }
-  })
+
+    fetchData()
+  }, [pageProps])
 
   return <Component {...pageProps} />
 }

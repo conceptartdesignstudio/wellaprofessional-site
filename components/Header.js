@@ -1,10 +1,15 @@
-import styles from '../styles/Header.module.css'
+import Image from 'next/image'
 
-export default function Header() {
+export const Header = () => {
+  const image = '/wella.png'
   return (
-    <div className={styles.header}>
-      <img src="/wella.png" alt="Wella Logo" className={styles.logo} />
-      <h1 className={styles.mainTitle}>Bem-vindo ao mundo de Wella</h1>
+    <div className="relative text-center flex flex-col">
+      <div className="relative h-20 mb-5">
+        <Image src={image} alt="Wella Logo" layout="fill" objectFit="contain" />
+      </div>
+      <h1 className="font-medium text-2xl uppercase text-neutral-400">
+        Bem-vindo ao mundo de Wella
+      </h1>
     </div>
   )
 }

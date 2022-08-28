@@ -1,15 +1,18 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Main.module.css'
 
-export default function product({ product, slug, image }) {
+export const Products = ({ product, slug, image }) => {
   return (
     <div className={styles.productCard}>
       <Link href={`/${slug}`}>
         <a className="text-4xl font-bold">
-          <img
+          <Image
             className="mb-5"
             src={image ? image : '/aeeiee-logo.png'}
             alt="Product Image"
+            height={300}
+            width={300}
           />
           <h2 dangerouslySetInnerHTML={{ __html: product }} />
         </a>

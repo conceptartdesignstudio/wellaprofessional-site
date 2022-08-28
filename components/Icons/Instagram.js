@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const Instagram = ({ link, selectedColor }) => {
+export const Instagram = ({ link, selectedColor }) => {
   return (
     <>
       <Link href={link}>
@@ -27,5 +27,3 @@ const Instagram = ({ link, selectedColor }) => {
     </>
   )
 }
-
-export default Instagram

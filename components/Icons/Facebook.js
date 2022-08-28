@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const Facebook = ({ link, selectedColor }) => {
+export const Facebook = ({ link, selectedColor }) => {
   return (
     <>
       <Link href={link}>
@@ -27,5 +27,3 @@ const Facebook = ({ link, selectedColor }) => {
     </>
   )
 }
-
-export default Facebook
