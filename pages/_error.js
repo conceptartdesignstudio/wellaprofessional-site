@@ -1,13 +1,7 @@
+import Error404 from '../components/Error'
+
 const Error = ({ statusCode }) => {
-  return (
-    <>
-      {statusCode === 404 ? (
-        <h1>Esse produto não existe ou você está visitando a página errada.</h1>
-      ) : (
-        <h1>Qualquer error</h1>
-      )}
-    </>
-  )
+  return <>{statusCode === 404 ? <Error404 /> : <h1>Qualquer error</h1>}</>
 }
 
 Error.getInitialProps = ({ res, err }) => {
