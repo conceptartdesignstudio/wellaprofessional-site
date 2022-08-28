@@ -1,107 +1,107 @@
 /* Global  */
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    /*  changed  */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /*  changed  */
 }
 
 .content {
-    flex: 1;
-    order: 1;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  flex: 1;
+  order: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem;
 }
 
 .containerRow {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Products Information: Article, Img and Description */
 .productInfos {
-    text-align: center;
-    margin: auto 2rem;
-    max-width: 80rem;
+  text-align: center;
+  margin: auto 2rem;
+  max-width: 80rem;
 }
 
 .productInfos img {
-    -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2));
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2));
-    max-width: 100%;
-    object-fit: contain;
+  -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2));
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .productInfos h1 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    line-height: 1.2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.2rem;
 }
 
 .productInfos h4,
 .productInfos p {
-    font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .productInfos h4 {
-    margin-top: 1rem;
-    margin-bottom: .3rem;
-    text-transform: uppercase;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
 }
 
 .productInfos p {
-    text-align: justify;
-    line-height: 1rem;
+  text-align: justify;
+  line-height: 1rem;
 }
 
 /* Links and Informative icons */
 
 .productSection {
-    margin: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-    margin-top: 1rem;
+  margin: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin-top: 1rem;
 }
 
 @media only screen and (min-width: 1200px) {
-    .productSection {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin: 0 12.5rem;
-    }
+  .productSection {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 12.5rem;
+  }
 }
 
 .productLinks {
-    font-size: .8rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    margin-top: .4rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-top: 0.4rem;
 }
 
 .productLinks span,
 .productLinks button {
-    display: inline-block;
-    vertical-align: center;
-    padding-top: .2rem;
-    margin-left: .2rem;
-    text-transform: uppercase;
+  display: inline-block;
+  vertical-align: center;
+  padding-top: 0.2rem;
+  margin-left: 0.2rem;
+  text-transform: uppercase;
 }
 
 .productLinks button {
@@ -110,40 +110,40 @@
 }
 
 .productIcons {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .productIcons ul li {
-    display: inline-block;
+  display: inline-block;
 }
 
 /* Footer: Brand Logo and Social Media Icons */
 
 .footer {
-    text-align: center;
-    padding: 0 3rem;
-    margin-top: 1rem;
+  text-align: center;
+  padding: 0 3rem;
+  margin-top: 1rem;
 }
 
 .footer img {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .socialMedias {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
 }
 
 .footer a {
-    margin: 0 1.5rem;
+  margin: 0 1.5rem;
 }
 
 .footer svg {
-    width: 40px;
+  width: 40px;
 }
 
 .accordionInfos {
@@ -154,7 +154,7 @@
 
 @media only screen and (min-width: 1280px) {
   .accordionInfos {
-    margin: auto!important;
+    margin: auto !important;
   }
 }
 
@@ -182,4 +182,3 @@
     margin-top: 3rem;
   }
 }
-

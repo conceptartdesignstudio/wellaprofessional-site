@@ -1,13 +1,18 @@
-import styles from "../styles/Product.module.css";
-import Link from "next/link";
-import useCollapse from "react-collapsed";
-import ReactPlayer from "react-player/lazy";
-import Icons from './Icons';
+import styles from '../styles/Product.module.css'
+import Link from 'next/link'
+import useCollapse from 'react-collapsed'
+import ReactPlayer from 'react-player/lazy'
+import Icons from './Icons'
 
-export default function ProductSection({ displayRules, learnMore, colors, icons }) {
+export default function ProductSection({
+  displayRules,
+  learnMore,
+  colors,
+  icons
+}) {
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse({
-    defaultExpanded: false,
-  });
+    defaultExpanded: false
+  })
 
   return (
     <>
@@ -53,7 +58,7 @@ export default function ProductSection({ displayRules, learnMore, colors, icons 
             </svg>
             <span>
               <button style={{ color: colors.moreColor }} {...getToggleProps()}>
-                {isExpanded ? "Fechar" : "Saiba Mais"}
+                {isExpanded ? 'Fechar' : 'Saiba Mais'}
               </button>
             </span>
           </div>
@@ -62,28 +67,28 @@ export default function ProductSection({ displayRules, learnMore, colors, icons 
         <Icons icons={icons} colors={colors} key="informative-icons" />
       </section>
 
-      <section className={styles.accordionInfos} {...getCollapseProps()} >
-          <section className="accordion">
-            <ReactPlayer
-              className={styles.accordionVideo}
-              url={learnMore.video}
-              playing={isExpanded}
-              controls={true}
-            />
-            <h2
-              className={styles.accordionHeading}
-              style={{ color: colors.titleColor }}
-            >
-              {learnMore.heading}
-            </h2>
-            <div
-              className={styles.accordionText}
-              style={{ color: colors.textColor }}
-            >
-              {learnMore.text}
-            </div>
-          </section>
+      <section className={styles.accordionInfos} {...getCollapseProps()}>
+        <section className="accordion">
+          <ReactPlayer
+            className={styles.accordionVideo}
+            url={learnMore.video}
+            playing={isExpanded}
+            controls={true}
+          />
+          <h2
+            className={styles.accordionHeading}
+            style={{ color: colors.titleColor }}
+          >
+            {learnMore.heading}
+          </h2>
+          <div
+            className={styles.accordionText}
+            style={{ color: colors.textColor }}
+          >
+            {learnMore.text}
+          </div>
+        </section>
       </section>
     </>
-  );
+  )
 }

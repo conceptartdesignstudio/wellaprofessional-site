@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.excerpt-img{
+.excerpt-img {
   height: 436.5px;
   width: 100%;
 }
@@ -20,15 +20,15 @@ body {
 
 html,
 body,
-body>div:first-child,
+body > div:first-child,
 div#__next,
-div#__next>div {
-    height: 100%;
+div#__next > div {
+  height: 100%;
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 img {

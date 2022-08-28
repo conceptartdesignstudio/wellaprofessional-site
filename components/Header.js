@@ -1,4 +1,4 @@
-import styles from "../styles/Header.module.css";
+import styles from '../styles/Header.module.css'
 
 export default function Header() {
   return (
@@ -6,5 +6,5 @@ export default function Header() {
       <img src="/wella.png" alt="Wella Logo" className={styles.logo} />
       <h1 className={styles.mainTitle}>Bem-vindo ao mundo de Wella</h1>
     </div>
-  );
+  )
 }

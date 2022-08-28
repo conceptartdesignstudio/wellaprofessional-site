@@ -1,4 +1,4 @@
-import styles from "../styles/Product.module.css";
+import styles from '../styles/Product.module.css'
 
 export default function Icons({ colors, icons }) {
   return (
@@ -509,5 +509,5 @@ export default function Icons({ colors, icons }) {
         </ul>
       </div>
     </>
-  );
+  )
 }
