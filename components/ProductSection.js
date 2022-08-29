@@ -65,7 +65,7 @@ export const ProductSection = ({
         )}
 
         {displayRules.imageAsBlock && (
-          <>
+          <div className="flex flex-col">
             {slideImages.map(({ id, altText, mediaItemUrl }) => (
               <div key={id} className="relative w-56 h-30">
                 <Image
@@ -76,7 +76,7 @@ export const ProductSection = ({
                 />
               </div>
             ))}
-          </>
+          </div>
         )}
 
         {displayRules.text && (
