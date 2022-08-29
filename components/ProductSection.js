@@ -4,6 +4,7 @@ import useCollapse from 'react-collapsed'
 import ReactPlayer from 'react-player/lazy'
 import { Icons } from './SingleProduct/Icons'
 import { Plus } from './Icons/Plus'
+import { LearnLink } from './LearnMore/LearnLink'
 
 export const ProductSection = ({ displayRules, learnMore, colors, icons }) => {
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse({
@@ -17,20 +18,7 @@ export const ProductSection = ({ displayRules, learnMore, colors, icons }) => {
         style={{ backgroundColor: colors.backgroundColor }}
       >
         {displayRules.learnLink && (
-          <div className={styles.productLinks}>
-            <Plus selectedColor={colors.moreColor} />
-            <span>
-              <Link href={learnMore.link}>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ color: colors.moreColor }}
-                >
-                  Saiba mais
-                </a>
-              </Link>
-            </span>
-          </div>
+          <LearnLink selectedColor={colors.moreColor} link={learnMore.link} />
         )}
 
         {displayRules.learnVideo && (
@@ -48,26 +36,33 @@ export const ProductSection = ({ displayRules, learnMore, colors, icons }) => {
       </section>
 
       <section className={styles.accordionInfos} {...getCollapseProps()}>
-        <section className="accordion">
+        {displayRules.video ? (
           <ReactPlayer
             className={styles.accordionVideo}
             url={learnMore.video}
             playing={isExpanded}
             controls={true}
+            volume={0.2}
           />
+        ) : null}
+
+        {displayRules.title && (
           <h2
             className={styles.accordionHeading}
             style={{ color: colors.titleColor }}
           >
             {learnMore.heading}
           </h2>
+        )}
+
+        {displayRules.text && (
           <div
             className={styles.accordionText}
             style={{ color: colors.textColor }}
           >
             {learnMore.text}
           </div>
-        </section>
+        )}
       </section>
     </>
   )

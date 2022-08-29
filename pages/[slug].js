@@ -88,6 +88,7 @@ export async function getStaticProps({ params }) {
   const { wellaProfessional } = await getProduct(params.slug)
   const container = 'max-w-5xl'
   const isProductPage = true
+  console.log(wellaProfessional)
 
   return {
     props: {
@@ -123,7 +124,12 @@ export async function getStaticProps({ params }) {
         instagram: wellaProfessional.products.displayInstagram,
         youtube: wellaProfessional.products.displayYoutube,
         learnLink: wellaProfessional.products.displayLearnMoreLink,
-        learnVideo: wellaProfessional.products.displayLearnMore
+        learnVideo: wellaProfessional.products.displayLearnMore,
+        imageAsBlock: wellaProfessional.products.displayImageAsBlock,
+        singleImage: wellaProfessional.products.displaySingleImage,
+        title: wellaProfessional.products.displayTitle,
+        text: wellaProfessional.products.displayText,
+        video: wellaProfessional.products.displayVideo
       },
       icons: {
         eac: wellaProfessional.products.eac,
@@ -136,7 +142,9 @@ export async function getStaticProps({ params }) {
         pp: wellaProfessional.products.pp,
         pead: wellaProfessional.products.pead
       },
-      productImg: wellaProfessional.products.productImage.mediaItemUrl
+      productImg: wellaProfessional.products.productImage.mediaItemUrl,
+      slideImages: wellaProfessional.products.slideImages,
+      singleImage: wellaProfessional.products.singleImage
     }
   }
 }
