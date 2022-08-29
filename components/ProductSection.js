@@ -1,15 +1,24 @@
 import styles from '../styles/Product.module.css'
-import Link from 'next/link'
 import useCollapse from 'react-collapsed'
 import ReactPlayer from 'react-player/lazy'
 import { Icons } from './SingleProduct/Icons'
 import { Plus } from './Icons/Plus'
 import { LearnLink } from './LearnMore/LearnLink'
+import Image from 'next/image'
 
-export const ProductSection = ({ displayRules, learnMore, colors, icons }) => {
+export const ProductSection = ({
+  displayRules,
+  learnMore,
+  colors,
+  icons,
+  slideImages,
+  singleImage
+}) => {
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse({
     defaultExpanded: false
   })
+
+  console.log(slideImages)
 
   return (
     <>
@@ -36,7 +45,7 @@ export const ProductSection = ({ displayRules, learnMore, colors, icons }) => {
       </section>
 
       <section className={styles.accordionInfos} {...getCollapseProps()}>
-        {displayRules.video ? (
+        {displayRules.video && (
           <ReactPlayer
             className={styles.accordionVideo}
             url={learnMore.video}
@@ -44,7 +53,7 @@ export const ProductSection = ({ displayRules, learnMore, colors, icons }) => {
             controls={true}
             volume={0.2}
           />
-        ) : null}
+        )}
 
         {displayRules.title && (
           <h2
@@ -53,6 +62,21 @@ export const ProductSection = ({ displayRules, learnMore, colors, icons }) => {
           >
             {learnMore.heading}
           </h2>
+        )}
+
+        {displayRules.imageAsBlock && (
+          <>
+            {slideImages.map(({ id, altText, mediaItemUrl }) => (
+              <div key={id} className="relative w-56 h-30">
+                <Image
+                  src={mediaItemUrl}
+                  alt={altText}
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </div>
+            ))}
+          </>
         )}
 
         {displayRules.text && (

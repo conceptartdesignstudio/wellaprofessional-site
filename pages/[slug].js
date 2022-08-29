@@ -9,8 +9,17 @@ import { ProductSection } from '../components/ProductSection'
 import { Youtube } from '../components/Icons/Youtube'
 
 const Product = (props) => {
-  const { title, brandName, content, colors, displayRules, icons, productImg } =
-    props
+  const {
+    title,
+    brandName,
+    content,
+    colors,
+    displayRules,
+    icons,
+    productImg,
+    slideImages,
+    singleImage
+  } = props
 
   return (
     <div
@@ -34,6 +43,8 @@ const Product = (props) => {
           displayRules={displayRules}
           learnMore={content.learnMore}
           colors={colors}
+          singleImage={singleImage}
+          slideImages={slideImages}
           icons={icons}
           key="ProductSection"
         />
@@ -88,7 +99,7 @@ export async function getStaticProps({ params }) {
   const { wellaProfessional } = await getProduct(params.slug)
   const container = 'max-w-5xl'
   const isProductPage = true
-  console.log(wellaProfessional)
+  console.log(wellaProfessional.products.slideImages)
 
   return {
     props: {
