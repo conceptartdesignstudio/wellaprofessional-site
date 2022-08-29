@@ -155,7 +155,7 @@ export async function getStaticProps({ params }) {
       },
       productImg: wellaProfessional.products.productImage.mediaItemUrl,
       slideImages: wellaProfessional.products.slideImages,
-      singleImage: wellaProfessional.products.singleImage
+      singleImage: wellaProfessional.products.singleImage.mediaItemUrl
     }
   }
 }
