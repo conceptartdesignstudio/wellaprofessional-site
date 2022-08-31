@@ -65,14 +65,17 @@ export const ProductSection = ({
         )}
 
         {displayRules.imageAsBlock && (
-          <div className="flex flex-col">
+          <div className="flex flex-col mt-6">
             {slideImages.map(({ id, altText, mediaItemUrl }) => (
-              <div key={id} className="relative w-56 h-30">
+              <div key={id} className="relative max-w-[500px] mb-3">
                 <Image
                   src={mediaItemUrl}
                   alt={altText}
-                  layout="fill"
+                  layout="responsive"
+                  width="100%"
+                  height="100%"
                   objectFit="contain"
+                  objectPosition="center"
                 />
               </div>
             ))}
@@ -83,9 +86,8 @@ export const ProductSection = ({
           <div
             className={styles.accordionText}
             style={{ color: colors.textColor }}
-          >
-            {learnMore.text}
-          </div>
+            dangerouslySetInnerHTML={{ __html: learnMore.text }}
+          ></div>
         )}
       </section>
     </>
