@@ -4,7 +4,8 @@ import ReactPlayer from 'react-player/lazy'
 import { Icons } from './SingleProduct/Icons'
 import { Plus } from './Icons/Plus'
 import { LearnLink } from './LearnMore/LearnLink'
-import Image from 'next/image'
+import { Slider } from './SingleProduct/Slider'
+import { ImageAsBlock } from './SingleProduct/ImageBlock'
 
 export const ProductSection = ({
   displayRules,
@@ -17,8 +18,6 @@ export const ProductSection = ({
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse({
     defaultExpanded: false
   })
-
-  console.log(slideImages)
 
   return (
     <>
@@ -45,15 +44,26 @@ export const ProductSection = ({
       </section>
 
       <section className={styles.accordionInfos} {...getCollapseProps()}>
-        {displayRules.video && (
-          <ReactPlayer
-            className={styles.accordionVideo}
-            url={learnMore.video}
-            playing={isExpanded}
-            controls={true}
-            volume={0.2}
-          />
-        )}
+        {displayRules.video &&
+          displayRules.videoPosition === 'displayVideoAboveTitle' && (
+            <ReactPlayer
+              className={styles.accordionVideo}
+              url={learnMore.video}
+              playing={isExpanded}
+              controls={true}
+              volume={0.2}
+            />
+          )}
+
+        {displayRules.imageAsSlide &&
+          displayRules.mediaPosition === 'displayMediaAboveTitle' && (
+            <Slider images={slideImages} />
+          )}
+
+        {displayRules.imageAsBlock &&
+          displayRules.mediaPosition === 'displayMediaAboveTitle' && (
+            <ImageAsBlock images={slideImages} />
+          )}
 
         {displayRules.title && (
           <h2
@@ -64,23 +74,26 @@ export const ProductSection = ({
           </h2>
         )}
 
-        {displayRules.imageAsBlock && (
-          <div className="flex flex-col mt-6">
-            {slideImages.map(({ id, altText, mediaItemUrl }) => (
-              <div key={id} className="relative max-w-[500px] mb-3">
-                <Image
-                  src={mediaItemUrl}
-                  alt={altText}
-                  layout="responsive"
-                  width="100%"
-                  height="100%"
-                  objectFit="contain"
-                  objectPosition="center"
-                />
-              </div>
-            ))}
-          </div>
-        )}
+        {displayRules.video &&
+          displayRules.videoPosition === 'displayVideoBelowTitle' && (
+            <ReactPlayer
+              className={styles.accordionVideo}
+              url={learnMore.video}
+              playing={isExpanded}
+              controls={true}
+              volume={0.2}
+            />
+          )}
+
+        {displayRules.imageAsSlide &&
+          displayRules.mediaPosition === 'displayMediaBelowTitle' && (
+            <Slider images={slideImages} />
+          )}
+
+        {displayRules.imageAsBlock &&
+          displayRules.mediaPosition === 'displayMediaBelowTitle' && (
+            <ImageAsBlock images={slideImages} />
+          )}
 
         {displayRules.text && (
           <div
@@ -89,6 +102,27 @@ export const ProductSection = ({
             dangerouslySetInnerHTML={{ __html: learnMore.text }}
           ></div>
         )}
+
+        {displayRules.video &&
+          displayRules.videoPosition === 'displayVideoBelowText' && (
+            <ReactPlayer
+              className={styles.accordionVideo}
+              url={learnMore.video}
+              playing={isExpanded}
+              controls={true}
+              volume={0.2}
+            />
+          )}
+
+        {displayRules.imageAsSlide &&
+          displayRules.mediaPosition === 'displayMediaBelowText' && (
+            <Slider images={slideImages} />
+          )}
+
+        {displayRules.imageAsBlock &&
+          displayRules.mediaPosition === 'displayMediaBelowText' && (
+            <ImageAsBlock images={slideImages} />
+          )}
       </section>
     </>
   )
