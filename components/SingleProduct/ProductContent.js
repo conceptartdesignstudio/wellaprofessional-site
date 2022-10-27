@@ -26,7 +26,7 @@ export const ProductContent = ({
             style={{ color: colors.titleColor }}
             dangerouslySetInnerHTML={{ __html: productName }}
           ></h1>
-          <h4 style={{ color: colors.textColor }}>Ingredientes:</h4>
+          <h4 style={{ color: colors.textColor }}>Ingredientes (português):</h4>
           <p style={{ color: colors.textColor }}>{productDescription}</p>
         </article>
       </section>
