@@ -21,6 +21,12 @@ export const ProductBrand = ({ brandName }) => {
       height: '35'
     },
     {
+      name: 'sebastian-white',
+      image: '/sebastian-white.png',
+      width: '200',
+      height: '35'
+    },
+    {
       name: 'nioxin',
       image: '/nioxin.png',
       width: '200',
