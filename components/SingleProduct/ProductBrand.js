@@ -16,9 +16,9 @@ export const ProductBrand = ({ brandName }) => {
     },
     {
       name: 'sebastian',
-      image: '/sebastian.png',
+      image: '/sebastian-black.png',
       width: '200',
-      height: '46'
+      height: '35'
     },
     {
       name: 'nioxin',
