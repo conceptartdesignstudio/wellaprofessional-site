@@ -34,3 +34,123 @@ div#__next > div {
 img {
   user-select: none;
 }
+
+.visible {
+  overflow: visible;
+}
+
+#pet .st0 {
+  clip-path: url(#SVGID_00000157989209295010178710000000885968072726699193_);
+  fill: none;
+  stroke-width: 13.2;
+  stroke-miterlimit: 10;
+}
+
+#pet .st2 {
+  font-family: 'Arial-BoldMT';
+}
+#pet .st3 {
+  font-size: 39.6px;
+}
+#pet .st4 {
+  letter-spacing: 1;
+}
+#pet .st5 {
+  font-size: 91.3991px;
+}
+#others .st0 {
+  clip-path: url(#SVGID_00000066477705246909258840000005209398373837623958_);
+  fill: none;
+  stroke-width: 13.2;
+  stroke-miterlimit: 10;
+}
+
+#others .st2 {
+  font-family: 'Arial-BoldMT';
+}
+#others .st3 {
+  font-size: 39.6px;
+}
+#others .st4 {
+  letter-spacing: 1;
+}
+#others .st5 {
+  font-size: 84.0115px;
+}
+
+#iron .st0 {
+  clip-path: url(#SVGID_00000008861267450606856170000004901634095842737835_);
+}
+#iron.st2 {
+  font-family: 'Arial-Black';
+}
+#iron.st3 {
+  font-size: 79.6131px;
+}
+#iron.st4 {
+  letter-spacing: 2;
+}
+#iron.st5 {
+  font-family: 'Arial-BoldMT';
+}
+#iron.st6 {
+  font-size: 37.62px;
+}
+#iron.st7 {
+  letter-spacing: 1;
+}
+
+#glass .st1 {
+  fill: none;
+  stroke-width: 0.8326;
+  stroke-miterlimit: 10;
+}
+#glass .st2 {
+  font-family: 'Arial-BoldMT';
+}
+#glass .st3 {
+  font-size: 39.6px;
+}
+#glass .st4 {
+  letter-spacing: 1;
+}
+
+#paper .st0 {
+  clip-path: url(#SVGID_00000079482633657597706240000010451114554685012874_);
+  fill: none;
+  stroke-width: 5.7829;
+  stroke-miterlimit: 10;
+}
+
+#paper .st2 {
+  font-family: 'Arial-BoldMT';
+}
+#paper .st3 {
+  font-size: 39.6px;
+}
+#paper .st4 {
+  letter-spacing: -1;
+}
+#paper .st5 {
+  letter-spacing: 1;
+}
+
+#pebd.st0 {
+  clip-path: url(#SVGID_00000087409986259002094420000012142854341352338109_);
+  fill: none;
+  stroke-width: 13.2;
+  stroke-miterlimit: 10;
+}
+
+#pebd .st2 {
+  font-family: 'Arial-BoldMT';
+}
+#pebd .st3 {
+  font-size: 39.6px;
+}
+#pebd .st4 {
+  letter-spacing: 1;
+}
+#pebd .st5 {
+  font-size: 91.3991px;
+}

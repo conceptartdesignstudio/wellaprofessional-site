@@ -1,4 +1,11 @@
 import styles from '../../styles/Product.module.css'
+import { PetSVG } from '../../components/Icons/Products/Pet'
+import { OthersSVG } from 'components/Icons/Products/Others'
+import { IronSVG } from 'components/Icons/Products/Iron'
+import { GlassSVG } from 'components/Icons/Products/Glass'
+import { PaperSVG } from 'components/Icons/Products/Paper'
+import { PebdSVG } from 'components/Icons/Products/PEBD'
+import { AluminumSVG } from 'components/Icons/Products/Aluminum'
 
 export const Icons = ({ colors, icons }) => {
   return (
@@ -504,6 +511,41 @@ export const Icons = ({ colors, icons }) => {
                   transform="translate(-25.6 -17.96)"
                 />
               </svg>
+            </li>
+          ) : null}
+          {icons.aluminum ? (
+            <li key="aluminum">
+              <AluminumSVG selectedColor={colors.informativeColor} />
+            </li>
+          ) : null}
+          {icons.glass ? (
+            <li key="glass">
+              <GlassSVG selectedColor={colors.informativeColor} />
+            </li>
+          ) : null}
+          {icons.iron ? (
+            <li key="iron">
+              <IronSVG selectedColor={colors.informativeColor} />
+            </li>
+          ) : null}
+          {icons.paper ? (
+            <li key="paper">
+              <PaperSVG selectedColor={colors.informativeColor} />
+            </li>
+          ) : null}
+          {icons.pet ? (
+            <li key="pet">
+              <PetSVG selectedColor={colors.informativeColor} />
+            </li>
+          ) : null}
+          {icons.pebd ? (
+            <li key="pebd">
+              <PebdSVG selectedColor={colors.informativeColor} />
+            </li>
+          ) : null}
+          {icons.others ? (
+            <li key="others">
+              <OthersSVG selectedColor={colors.informativeColor} />
             </li>
           ) : null}
         </ul>

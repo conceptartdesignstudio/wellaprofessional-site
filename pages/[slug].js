@@ -152,7 +152,14 @@ export async function getStaticProps({ params }) {
         descartavel: wellaProfessional.products.descartavel,
         lixeira: wellaProfessional.products.lixeira,
         pp: wellaProfessional.products.pp,
-        pead: wellaProfessional.products.pead
+        pead: wellaProfessional.products.pead,
+        pebd: wellaProfessional.products.pebd,
+        paper: wellaProfessional.products.paper,
+        pet: wellaProfessional.products.pet,
+        glass: wellaProfessional.products.glass,
+        aluminum: wellaProfessional.products.aluminum,
+        iron: wellaProfessional.products.iron,
+        others: wellaProfessional.products.others
       },
       productImg: wellaProfessional.products.productImage.mediaItemUrl,
       slideImages: wellaProfessional.products.slideImages

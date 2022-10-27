@@ -13,7 +13,7 @@ export const Slider = ({ images }) => {
       slidesPerView={1}
       className="mySwiper mt-5 max-w-[500px]"
     >
-      {images.map(({ id, altText, mediaItemUrl }) => (
+      {images?.map(({ id, altText, mediaItemUrl }) => (
         <SwiperSlide key={id} className="relative max-w-[500px] mb-3">
           <Image
             src={mediaItemUrl}
