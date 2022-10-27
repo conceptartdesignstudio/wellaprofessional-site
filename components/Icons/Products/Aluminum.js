@@ -9,6 +9,8 @@ export const AluminumSVG = ({ selectedColor }) => {
         viewBox="0 0 300 300"
         enableBackground="new 0 0 300 300"
         xmlSpace="preserve"
+        width="35px"
+        height="35px"
       >
         <g>
           <path
