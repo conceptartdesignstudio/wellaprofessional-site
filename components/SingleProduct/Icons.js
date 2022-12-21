@@ -496,11 +496,6 @@ export const Icons = ({ colors, icons }) => {
               <PpSVG selectedColor={colors.informativeColor} />
             </li>
           ) : null}
-          {icons.pote ? (
-            <li key="pote">
-              <PpSVG selectedColor={colors.informativeColor} />
-            </li>
-          ) : null}
           {icons.lixeira ? (
             <li key="lixeira">
               <svg
@@ -518,6 +513,11 @@ export const Icons = ({ colors, icons }) => {
                   transform="translate(-25.6 -17.96)"
                 />
               </svg>
+            </li>
+          ) : null}
+          {icons.pote ? (
+            <li key="pote">
+              <PpSVG selectedColor={colors.informativeColor} />
             </li>
           ) : null}
           {icons.aluminum ? (
