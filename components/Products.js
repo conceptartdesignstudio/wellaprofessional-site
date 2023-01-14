@@ -2,8 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Main.module.css'
 
-export const ProductCard = ({ productName, slug, image }) => {
-  console.log(productName)
+export const Products = ({ product, slug, image }) => {
   return (
     <div className={styles.productCard}>
       <Link href={`/${slug}`}>
@@ -15,7 +14,7 @@ export const ProductCard = ({ productName, slug, image }) => {
             height={300}
             width={300}
           />
-          <h2 dangerouslySetInnerHTML={{ __html: productName }} />
+          <h2 dangerouslySetInnerHTML={{ __html: product }} />
         </a>
       </Link>
       <div className="mt-6 relative">

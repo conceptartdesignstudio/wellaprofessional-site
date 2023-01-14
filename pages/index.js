@@ -2,7 +2,7 @@ import styles from '../styles/Main.module.css'
 import Head from 'next/head'
 import { getAllProducts } from '../lib/api'
 import { Header } from '../components/Header'
-import { ProductCard } from '../components/Products'
+import { Products } from '../components/Products'
 import { Footer } from '../components/Footer'
 
 const HomePage = ({ edges }) => (
@@ -19,8 +19,8 @@ const HomePage = ({ edges }) => (
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-5 mt-10">
         {edges.map(({ node }) => (
           <div key={node.slug}>
-            <ProductCard
-              productName={node.title}
+            <Products
+              product={node.products.productName}
               slug={node.slug}
               image={node.products.productImage.mediaItemUrl}
             />
