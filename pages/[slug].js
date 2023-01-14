@@ -88,6 +88,8 @@ const Product = (props) => {
 export async function getStaticPaths() {
   const productsWithSlug = await getAllProductsWithSlug()
 
+  console.log(productsWithSlug)
+
   return {
     paths: productsWithSlug.edges.map(({ node }) => `/${node.slug}`) || [],
     fallback: false
