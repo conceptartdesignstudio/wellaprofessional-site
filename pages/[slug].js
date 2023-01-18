@@ -167,8 +167,10 @@ const SingleProduct = ({ isProductPage = true }) => {
   return (
     <div>
       {isLoading ? (
-        <div className="flex flex-col justify-center items-center px-8 text-center">
-          <LottieView animationData={loadingData} />
+        <div className={`flex justify-center items-center`}>
+          <div className="w-[200px]">
+            <LottieView animationData={loadingData} />
+          </div>
         </div>
       ) : (
         <div
