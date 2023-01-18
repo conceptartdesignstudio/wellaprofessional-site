@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import styles from '../styles/Product.module.css'
-import { getAllProductsWithSlug, getProduct } from '../lib/api'
 import { Facebook } from '../components/Icons/Facebook'
 import { Instagram } from '../components/Icons/Instagram'
 import { ProductBrand } from '../components/SingleProduct/ProductBrand'
@@ -9,7 +8,6 @@ import { ProductSection } from '../components/ProductSection'
 import { Youtube } from '../components/Icons/Youtube'
 import { useQuery, gql } from '@apollo/client'
 import { useRouter } from 'next/router'
-import { useMemo } from 'react'
 
 const QUERY_GET_PRODUCT = gql`
   query ($id: ID!) {
@@ -148,78 +146,88 @@ function transformData(data) {
 }
 
 const SingleProduct = ({ isProductPage = true }) => {
+  let isLoading = true
   let product = {}
   const router = useRouter()
 
-  const { loading, data } = useQuery(QUERY_GET_PRODUCT, {
+  const { data } = useQuery(QUERY_GET_PRODUCT, {
     variables: {
       id: router.query.slug
     }
   })
 
-  console.log('loading', loading)
-
   if (data) {
     product = transformData(data)
+    isLoading = false
   }
 
-  console.log(product)
-
   return (
-    <div
-      className={styles.wrapper}
-      style={{ backgroundColor: product.colors.backgroundColor }}
-    >
-      <Head>
-        <title>{product.title}</title>
-        <link rel="icon" href="/wella.ico" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      <div className={styles.content}>
-        <ProductContent
-          productName={product.content.productName}
-          productImage={product.productImg}
-          productDescription={product.content.ingredients}
-          colors={product.colors}
-        />
-        <ProductSection
-          displayRules={product.displayRules}
-          learnMore={product.content.learnMore}
-          colors={product.colors}
-          singleImage={product.singleImage}
-          slideImages={product.slideImages}
-          icons={product.icons}
-          key="ProductSection"
-        />
-        <section
-          className={styles.footer}
+    <div>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div
+          className={styles.wrapper}
           style={{ backgroundColor: product.colors.backgroundColor }}
         >
-          <ProductBrand brandName={product.brandName} key={product.brandName} />
-          <div className={styles.socialMedias}>
-            <div className="wrapper">
-              {product.displayRules.instagram && (
-                <Instagram
-                  link={product.content.socialMedias.instagram}
-                  selectedColor={product.colors.socialMediaColor}
-                />
-              )}
-              {product.displayRules.facebook && (
-                <Facebook
-                  link={product.content.socialMedias.instagram}
-                  selectedColor={product.colors.socialMediaColor}
-                />
-              )}
-              {product.displayRules.youtube && (
-                <Youtube
-                  link={product.content.socialMedias.instagram}
-                  selectedColor={product.colors.socialMediaColor}
-                />
-              )}
-            </div>
+          <Head>
+            <title>{product.title}</title>
+            <link rel="icon" href="/wella.ico" />
+            <meta
+              name="viewport"
+              content="initial-scale=1.0, width=device-width"
+            />
+          </Head>
+          <div className={styles.content}>
+            <ProductContent
+              productName={product.content.productName}
+              productImage={product.productImg}
+              productDescription={product.content.ingredients}
+              colors={product.colors}
+            />
+            <ProductSection
+              displayRules={product.displayRules}
+              learnMore={product.content.learnMore}
+              colors={product.colors}
+              singleImage={product.singleImage}
+              slideImages={product.slideImages}
+              icons={product.icons}
+              key="ProductSection"
+            />
+            <section
+              className={styles.footer}
+              style={{ backgroundColor: product.colors.backgroundColor }}
+            >
+              <ProductBrand
+                brandName={product.brandName}
+                key={product.brandName}
+              />
+              <div className={styles.socialMedias}>
+                <div className="wrapper">
+                  {product.displayRules.instagram && (
+                    <Instagram
+                      link={product.content.socialMedias.instagram}
+                      selectedColor={product.colors.socialMediaColor}
+                    />
+                  )}
+                  {product.displayRules.facebook && (
+                    <Facebook
+                      link={product.content.socialMedias.instagram}
+                      selectedColor={product.colors.socialMediaColor}
+                    />
+                  )}
+                  {product.displayRules.youtube && (
+                    <Youtube
+                      link={product.content.socialMedias.instagram}
+                      selectedColor={product.colors.socialMediaColor}
+                    />
+                  )}
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
-      </div>
+        </div>
+      )}
     </div>
   )
 }
