@@ -1,5 +1,8 @@
+import { ApolloProvider } from '@apollo/client'
 import '../styles/globals.css'
 import { useState, useEffect } from 'react'
+
+import { client } from '../lib/apollo'
 
 const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
@@ -16,7 +19,11 @@ const MyApp = ({ Component, pageProps }) => {
     fetchData()
   }, [pageProps])
 
-  return <Component {...pageProps} />
+  return (
+    <ApolloProvider client={client}>
+      <Component {...pageProps} />
+    </ApolloProvider>
+  )
 }
 
 export default MyApp

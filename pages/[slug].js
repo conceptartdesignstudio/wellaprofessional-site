@@ -7,75 +7,215 @@ import { ProductBrand } from '../components/SingleProduct/ProductBrand'
 import { ProductContent } from '../components/SingleProduct/ProductContent'
 import { ProductSection } from '../components/ProductSection'
 import { Youtube } from '../components/Icons/Youtube'
+import { useQuery, gql } from '@apollo/client'
+import { useRouter } from 'next/router'
+import { useMemo } from 'react'
 
-const Product = (props) => {
-  const {
-    title,
-    brandName,
-    content,
-    colors,
-    displayRules,
-    icons,
-    productImg,
-    slideImages,
-    singleImage
-  } = props
+const QUERY_GET_PRODUCT = gql`
+  query ($id: ID!) {
+    wellaProfessional(id: $id, idType: SLUG) {
+      id
+      date
+      title
+      slug
+      products {
+        backgroundColor
+        book
+        descartavel
+        displayFacebook
+        displayImageAsBlock
+        displayInstagram
+        displayLearnMore
+        displayLearnMoreLink
+        displaySlider
+        displayText
+        displayTitle
+        displayVideo
+        displayYoutube
+        videoDisplayPosition
+        slideDisplayPosition
+        dozem
+        eac
+        facebook
+        fieldGroupName
+        informativeIconsColor
+        ingredients
+        instagram
+        lixeira
+        moreColor
+        moreHeading
+        moreInfos
+        moreText
+        moreVideo
+        pead
+        pp
+        pote
+        productImage {
+          mediaItemUrl
+        }
+        productInciColor
+        productName
+        productNameColor
+        reciclagem
+        retornavel
+        selectedProductBrand
+        slideImages {
+          id
+          altText
+          mediaItemUrl
+        }
+        socialMediaColor
+        youtube
+        pebd
+        paper
+        pet
+        glass
+        aluminum
+        iron
+        others
+      }
+    }
+  }
+`
+
+function transformData(data) {
+  const { wellaProfessional } = data
+  const container = 'max-w-5xl'
+
+  return {
+    title: wellaProfessional.title,
+    brandName: wellaProfessional.products.selectedProductBrand,
+    container,
+    content: {
+      productName: wellaProfessional.products.productName,
+      ingredients: wellaProfessional.products.ingredients,
+      learnMore: {
+        heading: wellaProfessional.products.moreHeading,
+        link: wellaProfessional.products.moreInfos,
+        text: wellaProfessional.products.moreText,
+        video: wellaProfessional.products.moreVideo
+      },
+      socialMedias: {
+        facebook: wellaProfessional.products.facebook,
+        instagram: wellaProfessional.products.instagram,
+        youtube: wellaProfessional.products.youtube
+      }
+    },
+    colors: {
+      backgroundColor: wellaProfessional.products.backgroundColor,
+      informativeColor: wellaProfessional.products.informativeIconsColor,
+      moreColor: wellaProfessional.products.moreColor,
+      socialMediaColor: wellaProfessional.products.socialMediaColor,
+      textColor: wellaProfessional.products.productInciColor,
+      titleColor: wellaProfessional.products.productNameColor
+    },
+    displayRules: {
+      facebook: wellaProfessional.products.displayFacebook,
+      instagram: wellaProfessional.products.displayInstagram,
+      youtube: wellaProfessional.products.displayYoutube,
+      learnLink: wellaProfessional.products.displayLearnMoreLink,
+      learnVideo: wellaProfessional.products.displayLearnMore,
+      imageAsBlock: wellaProfessional.products.displayImageAsBlock,
+      imageAsSlide: wellaProfessional.products.displaySlider,
+      title: wellaProfessional.products.displayTitle,
+      text: wellaProfessional.products.displayText,
+      video: wellaProfessional.products.displayVideo,
+      mediaPosition: wellaProfessional.products.slideDisplayPosition,
+      videoPosition: wellaProfessional.products.videoDisplayPosition
+    },
+    icons: {
+      eac: wellaProfessional.products.eac,
+      reciclagem: wellaProfessional.products.reciclagem,
+      retornavel: wellaProfessional.products.retornavel,
+      book: wellaProfessional.products.book,
+      dozeM: wellaProfessional.products.dozem,
+      descartavel: wellaProfessional.products.descartavel,
+      lixeira: wellaProfessional.products.lixeira,
+      pp: wellaProfessional.products.pp,
+      pote: wellaProfessional.products.pote,
+      pead: wellaProfessional.products.pead,
+      pebd: wellaProfessional.products.pebd,
+      paper: wellaProfessional.products.paper,
+      pet: wellaProfessional.products.pet,
+      glass: wellaProfessional.products.glass,
+      aluminum: wellaProfessional.products.aluminum,
+      iron: wellaProfessional.products.iron,
+      others: wellaProfessional.products.others
+    },
+    productImg: wellaProfessional.products.productImage.mediaItemUrl,
+    slideImages: wellaProfessional.products.slideImages
+  }
+}
+
+const SingleProduct = ({ isProductPage = true }) => {
+  let product = {}
+  const router = useRouter()
+
+  const { loading, data } = useQuery(QUERY_GET_PRODUCT, {
+    variables: {
+      id: router.query.slug
+    }
+  })
+
+  console.log('loading', loading)
+
+  if (data) {
+    product = transformData(data)
+  }
+
+  console.log(product)
 
   return (
     <div
       className={styles.wrapper}
-      style={{ backgroundColor: colors.backgroundColor }}
+      style={{ backgroundColor: product.colors.backgroundColor }}
     >
       <Head>
-        <title>{title}</title>
+        <title>{product.title}</title>
         <link rel="icon" href="/wella.ico" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-
       <div className={styles.content}>
         <ProductContent
-          productName={content.productName}
-          productImage={productImg}
-          productDescription={content.ingredients}
-          colors={colors}
+          productName={product.content.productName}
+          productImage={product.productImg}
+          productDescription={product.content.ingredients}
+          colors={product.colors}
         />
         <ProductSection
-          displayRules={displayRules}
-          learnMore={content.learnMore}
-          colors={colors}
-          singleImage={singleImage}
-          slideImages={slideImages}
-          icons={icons}
+          displayRules={product.displayRules}
+          learnMore={product.content.learnMore}
+          colors={product.colors}
+          singleImage={product.singleImage}
+          slideImages={product.slideImages}
+          icons={product.icons}
           key="ProductSection"
         />
         <section
           className={styles.footer}
-          style={{ backgroundColor: colors.backgroundColor }}
+          style={{ backgroundColor: product.colors.backgroundColor }}
         >
-          <ProductBrand brandName={brandName} key={brandName} />
-
+          <ProductBrand brandName={product.brandName} key={product.brandName} />
           <div className={styles.socialMedias}>
             <div className="wrapper">
-              {displayRules.instagram ? (
+              {product.displayRules.instagram && (
                 <Instagram
-                  link={content.socialMedias.instagram}
-                  selectedColor={colors.socialMediaColor}
+                  link={product.content.socialMedias.instagram}
+                  selectedColor={product.colors.socialMediaColor}
                 />
-              ) : null}
-
-              {displayRules.facebook ? (
+              )}
+              {product.displayRules.facebook && (
                 <Facebook
-                  link={content.socialMedias.instagram}
-                  selectedColor={colors.socialMediaColor}
+                  link={product.content.socialMedias.instagram}
+                  selectedColor={product.colors.socialMediaColor}
                 />
-              ) : null}
-
-              {displayRules.youtube ? (
+              )}
+              {product.displayRules.youtube && (
                 <Youtube
-                  link={content.socialMedias.instagram}
-                  selectedColor={colors.socialMediaColor}
+                  link={product.content.socialMedias.instagram}
+                  selectedColor={product.colors.socialMediaColor}
                 />
-              ) : null}
+              )}
             </div>
           </div>
         </section>
@@ -84,88 +224,4 @@ const Product = (props) => {
   )
 }
 
-// This function gets called at build time
-export async function getStaticPaths() {
-  const productsWithSlug = await getAllProductsWithSlug()
-
-  return {
-    paths: productsWithSlug.edges.map(({ node }) => `/${node.slug}`) || [],
-    fallback: false
-  }
-}
-
-// This also gets called at build time
-export async function getStaticProps({ params }) {
-  const { wellaProfessional } = await getProduct(params.slug)
-  const container = 'max-w-5xl'
-  const isProductPage = true
-
-  return {
-    props: {
-      isProductPage,
-      title: wellaProfessional.title,
-      brandName: wellaProfessional.products.selectedProductBrand,
-      container,
-      content: {
-        productName: wellaProfessional.products.productName,
-        ingredients: wellaProfessional.products.ingredients,
-        learnMore: {
-          heading: wellaProfessional.products.moreHeading,
-          link: wellaProfessional.products.moreInfos,
-          text: wellaProfessional.products.moreText,
-          video: wellaProfessional.products.moreVideo
-        },
-        socialMedias: {
-          facebook: wellaProfessional.products.facebook,
-          instagram: wellaProfessional.products.instagram,
-          youtube: wellaProfessional.products.youtube
-        }
-      },
-      colors: {
-        backgroundColor: wellaProfessional.products.backgroundColor,
-        informativeColor: wellaProfessional.products.informativeIconsColor,
-        moreColor: wellaProfessional.products.moreColor,
-        socialMediaColor: wellaProfessional.products.socialMediaColor,
-        textColor: wellaProfessional.products.productInciColor,
-        titleColor: wellaProfessional.products.productNameColor
-      },
-      displayRules: {
-        facebook: wellaProfessional.products.displayFacebook,
-        instagram: wellaProfessional.products.displayInstagram,
-        youtube: wellaProfessional.products.displayYoutube,
-        learnLink: wellaProfessional.products.displayLearnMoreLink,
-        learnVideo: wellaProfessional.products.displayLearnMore,
-        imageAsBlock: wellaProfessional.products.displayImageAsBlock,
-        imageAsSlide: wellaProfessional.products.displaySlider,
-        title: wellaProfessional.products.displayTitle,
-        text: wellaProfessional.products.displayText,
-        video: wellaProfessional.products.displayVideo,
-        mediaPosition: wellaProfessional.products.slideDisplayPosition,
-        videoPosition: wellaProfessional.products.videoDisplayPosition
-      },
-      icons: {
-        eac: wellaProfessional.products.eac,
-        reciclagem: wellaProfessional.products.reciclagem,
-        retornavel: wellaProfessional.products.retornavel,
-        book: wellaProfessional.products.book,
-        dozeM: wellaProfessional.products.dozem,
-        descartavel: wellaProfessional.products.descartavel,
-        lixeira: wellaProfessional.products.lixeira,
-        pp: wellaProfessional.products.pp,
-        pote: wellaProfessional.products.pote,
-        pead: wellaProfessional.products.pead,
-        pebd: wellaProfessional.products.pebd,
-        paper: wellaProfessional.products.paper,
-        pet: wellaProfessional.products.pet,
-        glass: wellaProfessional.products.glass,
-        aluminum: wellaProfessional.products.aluminum,
-        iron: wellaProfessional.products.iron,
-        others: wellaProfessional.products.others
-      },
-      productImg: wellaProfessional.products.productImage.mediaItemUrl,
-      slideImages: wellaProfessional.products.slideImages
-    }
-  }
-}
-
-export default Product
+export default SingleProduct
