@@ -9,6 +9,9 @@ import { Youtube } from '../components/Icons/Youtube'
 import { useQuery, gql } from '@apollo/client'
 import { useRouter } from 'next/router'
 
+import LottieView from 'lottie-react'
+import loadingData from '../assets/lf20_wdljjitv.json'
+
 const QUERY_GET_PRODUCT = gql`
   query ($id: ID!) {
     wellaProfessional(id: $id, idType: SLUG) {
@@ -164,7 +167,9 @@ const SingleProduct = ({ isProductPage = true }) => {
   return (
     <div>
       {isLoading ? (
-        <p>Loading...</p>
+        <div className="flex flex-col justify-center items-center px-8 text-center">
+          <LottieView animationData={loadingData} />
+        </div>
       ) : (
         <div
           className={styles.wrapper}
