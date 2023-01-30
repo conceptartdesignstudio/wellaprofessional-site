@@ -2,12 +2,9 @@ import styles from '../../styles/Group.module.css'
 import Image from 'next/image'
 import { LearnLink } from 'components/LearnMore/LearnLink'
 
-export const GroupProduct = ({
-  productImage,
-  productResume,
-  productLink,
-  colors
-}) => {
+export const GroupProduct = (props) => {
+  const { productImage, productName, productResume, productLink, colors } =
+    props
   return (
     <>
       <div
@@ -28,6 +25,11 @@ export const GroupProduct = ({
           )}
           {productResume && (
             <div className="flex-1 flex justify-start flex-col">
+              <h1
+                className="text-left"
+                style={{ color: colors.textColor }}
+                dangerouslySetInnerHTML={{ __html: productName }}
+              ></h1>
               <h4 style={{ color: colors.textColor }}>
                 Ingredientes (português):
               </h4>

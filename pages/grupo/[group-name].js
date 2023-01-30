@@ -26,6 +26,7 @@ const QUERY_GET_GROUP = gql`
         groupRelatedProducts {
           __typename
           ... on WellaProfessional {
+            title
             slug
             products {
               ingredients
@@ -57,9 +58,10 @@ function transformData(data) {
       linkColor: wellaGroup?.group?.groupLinkColor,
       textColor: wellaGroup?.group?.groupTextColor
     },
+    image: wellaGroup?.group?.groupImage?.mediaItemUrl,
     pageTitle: wellaGroup?.group?.groupTitle,
     productImage: wellaGroup?.group?.productImage?.mediaItemUrl,
-    productGroupimage: wellaGroup?.group?.groupImage?.mediaItemUrl,
+    productGroupImage: wellaGroup?.group?.productGroupImage?.mediaItemUrl,
     relatedProducts: wellaGroup?.group?.groupRelatedProducts
   }
 }
@@ -80,6 +82,8 @@ const SingleGroup = ({ isProductPage = true }) => {
     group = transformData(data)
     isLoading = false
   }
+
+  console.log(group)
 
   return (
     <div>
@@ -107,21 +111,24 @@ const SingleGroup = ({ isProductPage = true }) => {
               <GroupHeader
                 colors={group.colors}
                 groupName={group.pageTitle}
-                groupHeader={group.image}
+                groupImage={group.image}
               />
-              {group.relatedProducts?.map((item) => (
-                <GroupProduct
-                  key={item.slug}
-                  colors={group.colors}
-                  productImage={
-                    item.products?.productGroupImage
-                      ? item.products?.productGroupImage?.mediaItemUrl
-                      : item.products?.productImage?.mediaItemUrl
-                  }
-                  productResume={item.products.ingredients}
-                  productLink={`${groupName}/${item.slug}`}
-                />
-              ))}
+              <div className="mb-8">
+                {group.relatedProducts?.map((item) => (
+                  <GroupProduct
+                    key={item.slug}
+                    colors={group.colors}
+                    productImage={
+                      item.products?.productGroupImage
+                        ? item.products?.productGroupImage?.mediaItemUrl
+                        : item.products?.productImage?.mediaItemUrl
+                    }
+                    productName={item.title}
+                    productResume={item.products.ingredients}
+                    productLink={`${groupName}/${item.slug}`}
+                  />
+                ))}
+              </div>
             </div>
           </main>
         </div>
