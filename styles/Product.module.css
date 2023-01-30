@@ -95,8 +95,19 @@
   margin-top: 0.4rem;
 }
 
+.groupLinks {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: flex;
+  align-content: center;
+  margin-top: 0.4rem;
+}
+
 .productLinks span,
-.productLinks button {
+.groupLinks span,
+.productLinks button,
+.groupLinks button {
   display: inline-block;
   vertical-align: center;
   padding-top: 0.2rem;
@@ -104,6 +115,7 @@
   text-transform: uppercase;
 }
 
+.groupLinks button,
 .productLinks button {
   padding-top: 0;
   font-weight: 700;

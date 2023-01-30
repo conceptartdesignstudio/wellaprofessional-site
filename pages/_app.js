@@ -5,8 +5,6 @@ import { useState, useEffect } from 'react'
 import { client } from '../lib/apollo'
 
 const MyApp = ({ Component, pageProps }) => {
-  console.log(pageProps)
-
   useEffect(() => {
     async function fetchData() {
       if (pageProps) {

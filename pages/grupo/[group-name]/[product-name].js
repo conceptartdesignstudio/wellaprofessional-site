@@ -1,16 +1,16 @@
 import Head from 'next/head'
-import styles from '../styles/Product.module.css'
-import { Facebook } from '../components/Icons/Facebook'
-import { Instagram } from '../components/Icons/Instagram'
-import { ProductBrand } from '../components/SingleProduct/ProductBrand'
-import { ProductContent } from '../components/SingleProduct/ProductContent'
-import { ProductSection } from '../components/ProductSection'
-import { Youtube } from '../components/Icons/Youtube'
+import styles from '../../../styles/Product.module.css'
+import { Facebook } from '../../../components/Icons/Facebook'
+import { Instagram } from '../../../components/Icons/Instagram'
+import { ProductBrand } from '../../../components/SingleProduct/ProductBrand'
+import { ProductContent } from '../../../components/SingleProduct/ProductContent'
+import { ProductSection } from '../../../components/ProductSection'
+import { Youtube } from '../../../components/Icons/Youtube'
 import { useQuery, gql } from '@apollo/client'
 import { useRouter } from 'next/router'
 
 import LottieView from 'lottie-react'
-import loadingData from '../assets/lf20_wdljjitv.json'
+import loadingData from '../../../assets/lf20_wdljjitv.json'
 
 const QUERY_GET_PRODUCT = gql`
   query ($id: ID!) {
@@ -148,14 +148,14 @@ function transformData(data) {
   }
 }
 
-const SingleProduct = ({ isProductPage = true }) => {
+const SingleGroupProduct = ({ isProductPage = true }) => {
   let isLoading = true
   let product = {}
   const router = useRouter()
 
   const { data } = useQuery(QUERY_GET_PRODUCT, {
     variables: {
-      id: router.query.slug
+      id: router.query['product-name']
     }
   })
 
@@ -178,9 +178,7 @@ const SingleProduct = ({ isProductPage = true }) => {
           style={{ backgroundColor: product.colors.backgroundColor }}
         >
           <Head>
-            <title>
-              {product.title ? product.title : 'Wella Professional'}
-            </title>
+            <title>{product.title}</title>
             <link rel="icon" href="/wella.ico" />
             <meta
               name="viewport"
@@ -241,4 +239,4 @@ const SingleProduct = ({ isProductPage = true }) => {
   )
 }
 
-export default SingleProduct
+export default SingleGroupProduct

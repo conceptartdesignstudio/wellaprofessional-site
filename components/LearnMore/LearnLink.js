@@ -2,10 +2,10 @@ import styles from '../../styles/Product.module.css'
 import Link from 'next/link'
 import { Plus } from '../Icons/Plus'
 
-export const LearnLink = ({ selectedColor, link }) => {
+export const LearnLink = ({ isGroup, selectedColor, link }) => {
   return (
     <>
-      <div className={styles.productLinks}>
+      <div className={isGroup ? styles.groupLinks : styles.productLinks}>
         <Plus selectedColor={selectedColor} />
         <span>
           <Link href={link}>
@@ -14,7 +14,7 @@ export const LearnLink = ({ selectedColor, link }) => {
               rel="noreferrer"
               style={{ color: selectedColor }}
             >
-              Saiba mais
+              {isGroup ? 'Lista completa' : 'Saiba mais'}
             </a>
           </Link>
         </span>
