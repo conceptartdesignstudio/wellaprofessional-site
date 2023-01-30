@@ -32,6 +32,9 @@ const QUERY_GET_GROUP = gql`
               productGroupImage {
                 mediaItemUrl
               }
+              productImage {
+                mediaItemUrl
+              }
             }
           }
         }
@@ -55,7 +58,8 @@ function transformData(data) {
       textColor: wellaGroup?.group?.groupTextColor
     },
     pageTitle: wellaGroup?.group?.groupTitle,
-    image: wellaGroup?.group?.groupImage?.mediaItemUrl,
+    productImage: wellaGroup?.group?.productImage?.mediaItemUrl,
+    productGroupimage: wellaGroup?.group?.groupImage?.mediaItemUrl,
     relatedProducts: wellaGroup?.group?.groupRelatedProducts
   }
 }
@@ -109,7 +113,11 @@ const SingleGroup = ({ isProductPage = true }) => {
                 <GroupProduct
                   key={item.slug}
                   colors={group.colors}
-                  productImage={item.products?.productGroupImage?.mediaItemUrl}
+                  productImage={
+                    item.products?.productGroupImage
+                      ? item.products?.productGroupImage?.mediaItemUrl
+                      : item.products?.productImage?.mediaItemUrl
+                  }
                   productResume={item.products.ingredients}
                   productLink={`${groupName}/${item.slug}`}
                 />
