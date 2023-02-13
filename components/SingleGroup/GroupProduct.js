@@ -26,8 +26,8 @@ export const GroupProduct = (props) => {
           {productResume && (
             <div className="flex-1 flex justify-start flex-col">
               <h1
-                className="text-left"
-                style={{ color: colors.textColor }}
+                className="text-left font-semibold"
+                style={{ color: colors.titleColor }}
                 dangerouslySetInnerHTML={{ __html: productName }}
               ></h1>
               <h4 style={{ color: colors.textColor }}>

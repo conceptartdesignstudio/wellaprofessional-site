@@ -19,6 +19,7 @@ const QUERY_GET_GROUP = gql`
         groupBackgroundColor
         groupLinkColor
         groupTextColor
+        groupTitleColor
         groupTitle
         groupImage {
           mediaItemUrl
@@ -48,15 +49,14 @@ function transformData(data) {
   const { wellaGroup } = data
   const container = 'max-w-5xl'
 
-  console.log(wellaGroup)
-
   return {
     container,
     title: wellaGroup.title,
     colors: {
       backgroundColor: wellaGroup?.group.groupBackgroundColor,
       linkColor: wellaGroup?.group?.groupLinkColor,
-      textColor: wellaGroup?.group?.groupTextColor
+      textColor: wellaGroup?.group?.groupTextColor,
+      titleColor: wellaGroup?.group?.groupTitleColor
     },
     image: wellaGroup?.group?.groupImage?.mediaItemUrl,
     pageTitle: wellaGroup?.group?.groupTitle,
@@ -82,8 +82,6 @@ const SingleGroup = ({ isProductPage = true }) => {
     group = transformData(data)
     isLoading = false
   }
-
-  console.log(group)
 
   return (
     <div>
