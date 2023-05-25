@@ -84,67 +84,67 @@ function transformData(data) {
   const container = 'max-w-5xl'
 
   return {
-    title: wellaProfessional.title,
-    brandName: wellaProfessional.products.selectedProductBrand,
+    title: wellaProfessional?.title,
+    brandName: wellaProfessional?.products?.selectedProductBrand,
     container,
     content: {
-      productName: wellaProfessional.products.productName,
-      ingredients: wellaProfessional.products.ingredients,
+      productName: wellaProfessional?.products?.productName,
+      ingredients: wellaProfessional?.products?.ingredients,
       learnMore: {
-        heading: wellaProfessional.products.moreHeading,
-        link: wellaProfessional.products.moreInfos,
-        text: wellaProfessional.products.moreText,
-        video: wellaProfessional.products.moreVideo
+        heading: wellaProfessional?.products?.moreHeading,
+        link: wellaProfessional?.products?.moreInfos,
+        text: wellaProfessional?.products?.moreText,
+        video: wellaProfessional?.products?.moreVideo
       },
       socialMedias: {
-        facebook: wellaProfessional.products.facebook,
-        instagram: wellaProfessional.products.instagram,
-        youtube: wellaProfessional.products.youtube
+        facebook: wellaProfessional?.products?.facebook,
+        instagram: wellaProfessional?.products?.instagram,
+        youtube: wellaProfessional?.products?.youtube
       }
     },
     colors: {
-      backgroundColor: wellaProfessional.products.backgroundColor,
-      informativeColor: wellaProfessional.products.informativeIconsColor,
-      moreColor: wellaProfessional.products.moreColor,
-      socialMediaColor: wellaProfessional.products.socialMediaColor,
-      textColor: wellaProfessional.products.productInciColor,
-      titleColor: wellaProfessional.products.productNameColor
+      backgroundColor: wellaProfessional?.products?.backgroundColor,
+      informativeColor: wellaProfessional?.products?.informativeIconsColor,
+      moreColor: wellaProfessional?.products?.moreColor,
+      socialMediaColor: wellaProfessional?.products?.socialMediaColor,
+      textColor: wellaProfessional?.products?.productInciColor,
+      titleColor: wellaProfessional?.products?.productNameColor
     },
     displayRules: {
-      facebook: wellaProfessional.products.displayFacebook,
-      instagram: wellaProfessional.products.displayInstagram,
-      youtube: wellaProfessional.products.displayYoutube,
-      learnLink: wellaProfessional.products.displayLearnMoreLink,
-      learnVideo: wellaProfessional.products.displayLearnMore,
-      imageAsBlock: wellaProfessional.products.displayImageAsBlock,
-      imageAsSlide: wellaProfessional.products.displaySlider,
-      title: wellaProfessional.products.displayTitle,
-      text: wellaProfessional.products.displayText,
-      video: wellaProfessional.products.displayVideo,
-      mediaPosition: wellaProfessional.products.slideDisplayPosition,
-      videoPosition: wellaProfessional.products.videoDisplayPosition
+      facebook: wellaProfessional?.products?.displayFacebook,
+      instagram: wellaProfessional?.products?.displayInstagram,
+      youtube: wellaProfessional?.products?.displayYoutube,
+      learnLink: wellaProfessional?.products?.displayLearnMoreLink,
+      learnVideo: wellaProfessional?.products?.displayLearnMore,
+      imageAsBlock: wellaProfessional?.products?.displayImageAsBlock,
+      imageAsSlide: wellaProfessional?.products?.displaySlider,
+      title: wellaProfessional?.products?.displayTitle,
+      text: wellaProfessional?.products?.displayText,
+      video: wellaProfessional?.products?.displayVideo,
+      mediaPosition: wellaProfessional?.products?.slideDisplayPosition,
+      videoPosition: wellaProfessional?.products?.videoDisplayPosition
     },
     icons: {
-      eac: wellaProfessional.products.eac,
-      reciclagem: wellaProfessional.products.reciclagem,
-      retornavel: wellaProfessional.products.retornavel,
-      book: wellaProfessional.products.book,
-      dozeM: wellaProfessional.products.dozem,
-      descartavel: wellaProfessional.products.descartavel,
-      lixeira: wellaProfessional.products.lixeira,
-      pp: wellaProfessional.products.pp,
-      pote: wellaProfessional.products.pote,
-      pead: wellaProfessional.products.pead,
-      pebd: wellaProfessional.products.pebd,
-      paper: wellaProfessional.products.paper,
-      pet: wellaProfessional.products.pet,
-      glass: wellaProfessional.products.glass,
-      aluminum: wellaProfessional.products.aluminum,
-      iron: wellaProfessional.products.iron,
-      others: wellaProfessional.products.others
+      eac: wellaProfessional?.products?.eac,
+      reciclagem: wellaProfessional?.products?.reciclagem,
+      retornavel: wellaProfessional?.products?.retornavel,
+      book: wellaProfessional?.products?.book,
+      dozeM: wellaProfessional?.products?.dozem,
+      descartavel: wellaProfessional?.products?.descartavel,
+      lixeira: wellaProfessional?.products?.lixeira,
+      pp: wellaProfessional?.products?.pp,
+      pote: wellaProfessional?.products?.pote,
+      pead: wellaProfessional?.products?.pead,
+      pebd: wellaProfessional?.products?.pebd,
+      paper: wellaProfessional?.products?.paper,
+      pet: wellaProfessional?.products?.pet,
+      glass: wellaProfessional?.products?.glass,
+      aluminum: wellaProfessional?.products?.aluminum,
+      iron: wellaProfessional?.products?.iron,
+      others: wellaProfessional?.products?.others
     },
-    productImg: wellaProfessional.products.productImage.mediaItemUrl,
-    slideImages: wellaProfessional.products.slideImages
+    productImg: wellaProfessional?.products?.productImage.mediaItemUrl,
+    slideImages: wellaProfessional?.products?.slideImages
   }
 }
 
