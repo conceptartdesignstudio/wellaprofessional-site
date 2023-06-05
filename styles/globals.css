@@ -154,3 +154,48 @@ img {
 #pebd .st5 {
   font-size: 91.3991px;
 }
+
+#ppPote .cls-1 {
+  clip-path: url(#clippath-1);
+}
+#ppPote .cls-2 {
+  stroke-miterlimit: 10;
+  stroke-width: 10.76px;
+}
+#ppPote .cls-2,
+#ppPote .cls-3 {
+  fill: none;
+}
+#ppPote.cls-4 {
+  clip-path: url(#clippath);
+}
+
+#ppTampa .cls-1 {
+  clip-path: url(#clippath-1);
+}
+#ppTampa .cls-2 {
+  stroke-miterlimit: 10;
+  stroke-width: 10.76px;
+}
+#ppTampa .cls-2,
+#ppTampa .cls-3 {
+  fill: none;
+}
+#ppTampa .cls-4 {
+  clip-path: url(#clippath);
+}
+
+#ppPoteTampa .cls-1 {
+  clip-path: url(#clippath-1);
+}
+#ppPoteTampa .cls-2 {
+  stroke-miterlimit: 10;
+  stroke-width: 10.76px;
+}
+#ppPoteTampa .cls-2,
+#ppPoteTampa .cls-3 {
+  fill: none;
+}
+#ppPoteTampa .cls-4 {
+  clip-path: url(#clippath);
+}

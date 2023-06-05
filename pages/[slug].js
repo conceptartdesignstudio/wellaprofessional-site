@@ -6,163 +6,86 @@ import { ProductBrand } from '../components/SingleProduct/ProductBrand'
 import { ProductContent } from '../components/SingleProduct/ProductContent'
 import { ProductSection } from '../components/ProductSection'
 import { Youtube } from '../components/Icons/Youtube'
-import { useQuery, gql } from '@apollo/client'
-import { useRouter } from 'next/router'
+
+import { getProductPage } from '../lib/api'
 
 import LottieView from 'lottie-react'
 import loadingData from '../assets/lf20_wdljjitv.json'
 
-const QUERY_GET_PRODUCT = gql`
-  query ($id: ID!) {
-    wellaProfessional(id: $id, idType: SLUG) {
-      id
-      date
-      title
-      slug
-      products {
-        backgroundColor
-        book
-        descartavel
-        displayFacebook
-        displayImageAsBlock
-        displayInstagram
-        displayLearnMore
-        displayLearnMoreLink
-        displaySlider
-        displayText
-        displayTitle
-        displayVideo
-        displayYoutube
-        videoDisplayPosition
-        slideDisplayPosition
-        dozem
-        eac
-        facebook
-        fieldGroupName
-        informativeIconsColor
-        ingredients
-        instagram
-        lixeira
-        moreColor
-        moreHeading
-        moreInfos
-        moreText
-        moreVideo
-        pead
-        pp
-        pote
-        productImage {
-          mediaItemUrl
-        }
-        productInciColor
-        productName
-        productNameColor
-        reciclagem
-        retornavel
-        selectedProductBrand
-        slideImages {
-          id
-          altText
-          mediaItemUrl
-        }
-        socialMediaColor
-        youtube
-        pebd
-        paper
-        pet
-        glass
-        aluminum
-        iron
-        others
-      }
-    }
-  }
-`
-
 function transformData(data) {
-  const { wellaProfessional } = data
   const container = 'max-w-5xl'
 
   return {
-    title: wellaProfessional?.title,
-    brandName: wellaProfessional?.products?.selectedProductBrand,
+    title: data.title,
+    brandName: data?.products?.selectedProductBrand,
     container,
     content: {
-      productName: wellaProfessional?.products?.productName,
-      ingredients: wellaProfessional?.products?.ingredients,
+      productName: data?.products?.productName,
+      ingredients: data?.products?.ingredients,
       learnMore: {
-        heading: wellaProfessional?.products?.moreHeading,
-        link: wellaProfessional?.products?.moreInfos,
-        text: wellaProfessional?.products?.moreText,
-        video: wellaProfessional?.products?.moreVideo
+        heading: data?.products?.moreHeading,
+        link: data?.products?.moreInfos,
+        text: data?.products?.moreText,
+        video: data?.products?.moreVideo
       },
       socialMedias: {
-        facebook: wellaProfessional?.products?.facebook,
-        instagram: wellaProfessional?.products?.instagram,
-        youtube: wellaProfessional?.products?.youtube
+        facebook: data?.products?.facebook,
+        instagram: data?.products?.instagram,
+        youtube: data?.products?.youtube
       }
     },
     colors: {
-      backgroundColor: wellaProfessional?.products?.backgroundColor,
-      informativeColor: wellaProfessional?.products?.informativeIconsColor,
-      moreColor: wellaProfessional?.products?.moreColor,
-      socialMediaColor: wellaProfessional?.products?.socialMediaColor,
-      textColor: wellaProfessional?.products?.productInciColor,
-      titleColor: wellaProfessional?.products?.productNameColor
+      backgroundColor: data?.products?.backgroundColor,
+      informativeColor: data?.products?.informativeIconsColor,
+      moreColor: data?.products?.moreColor,
+      socialMediaColor: data?.products?.socialMediaColor,
+      textColor: data?.products?.productInciColor,
+      titleColor: data?.products?.productNameColor
     },
     displayRules: {
-      facebook: wellaProfessional?.products?.displayFacebook,
-      instagram: wellaProfessional?.products?.displayInstagram,
-      youtube: wellaProfessional?.products?.displayYoutube,
-      learnLink: wellaProfessional?.products?.displayLearnMoreLink,
-      learnVideo: wellaProfessional?.products?.displayLearnMore,
-      imageAsBlock: wellaProfessional?.products?.displayImageAsBlock,
-      imageAsSlide: wellaProfessional?.products?.displaySlider,
-      title: wellaProfessional?.products?.displayTitle,
-      text: wellaProfessional?.products?.displayText,
-      video: wellaProfessional?.products?.displayVideo,
-      mediaPosition: wellaProfessional?.products?.slideDisplayPosition,
-      videoPosition: wellaProfessional?.products?.videoDisplayPosition
+      facebook: data?.products?.displayFacebook,
+      instagram: data?.products?.displayInstagram,
+      youtube: data?.products?.displayYoutube,
+      learnLink: data?.products?.displayLearnMoreLink,
+      learnVideo: data?.products?.displayLearnMore,
+      imageAsBlock: data?.products?.displayImageAsBlock,
+      imageAsSlide: data?.products?.displaySlider,
+      title: data?.products?.displayTitle,
+      text: data?.products?.displayText,
+      video: data?.products?.displayVideo,
+      mediaPosition: data?.products?.slideDisplayPosition,
+      videoPosition: data?.products?.videoDisplayPosition
     },
     icons: {
-      eac: wellaProfessional?.products?.eac,
-      reciclagem: wellaProfessional?.products?.reciclagem,
-      retornavel: wellaProfessional?.products?.retornavel,
-      book: wellaProfessional?.products?.book,
-      dozeM: wellaProfessional?.products?.dozem,
-      descartavel: wellaProfessional?.products?.descartavel,
-      lixeira: wellaProfessional?.products?.lixeira,
-      pp: wellaProfessional?.products?.pp,
-      pote: wellaProfessional?.products?.pote,
-      pead: wellaProfessional?.products?.pead,
-      pebd: wellaProfessional?.products?.pebd,
-      paper: wellaProfessional?.products?.paper,
-      pet: wellaProfessional?.products?.pet,
-      glass: wellaProfessional?.products?.glass,
-      aluminum: wellaProfessional?.products?.aluminum,
-      iron: wellaProfessional?.products?.iron,
-      others: wellaProfessional?.products?.others
+      eac: data?.products?.eac,
+      reciclagem: data?.products?.reciclagem,
+      retornavel: data?.products?.retornavel,
+      book: data?.products?.book,
+      dozeM: data?.products?.dozem,
+      descartavel: data?.products?.descartavel,
+      lixeira: data?.products?.lixeira,
+      ppTampa: data?.products?.ppTampa,
+      ppPote: data?.products?.ppPote,
+      ppPoteTampa: data?.products?.ppPoteTampa,
+      pead: data?.products?.pead,
+      pebd: data?.products?.pebd,
+      paper: data?.products?.paper,
+      pet: data?.products?.pet,
+      glass: data?.products?.glass,
+      aluminum: data?.products?.aluminum,
+      iron: data?.products?.iron,
+      others: data?.products?.others
     },
-    productImg: wellaProfessional?.products?.productImage.mediaItemUrl,
-    slideImages: wellaProfessional?.products?.slideImages
+    productImg: data?.products?.productImage.mediaItemUrl,
+    slideImages: data?.products?.slideImages
   }
 }
 
-const SingleProduct = ({ isProductPage = true }) => {
-  let isLoading = true
-  let product = {}
-  const router = useRouter()
+const SingleProduct = (props) => {
+  const product = transformData(props.data)
+  const isLoading = false
 
-  const { data } = useQuery(QUERY_GET_PRODUCT, {
-    variables: {
-      id: router.query.slug
-    }
-  })
-
-  if (data) {
-    product = transformData(data)
-    isLoading = false
-  }
+  console.log(product)
 
   return (
     <div>
@@ -239,6 +162,17 @@ const SingleProduct = ({ isProductPage = true }) => {
       )}
     </div>
   )
+}
+
+export const getServerSideProps = async (context) => {
+  const { slug } = context.params
+  const data = await getProductPage(slug)
+
+  return {
+    props: {
+      data
+    } // will be passed to the page component as props
+  }
 }
 
 export default SingleProduct
