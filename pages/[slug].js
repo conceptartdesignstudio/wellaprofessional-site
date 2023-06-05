@@ -16,7 +16,7 @@ function transformData(data) {
   const container = 'max-w-5xl'
 
   return {
-    title: data.title,
+    title: data?.title,
     brandName: data?.products?.selectedProductBrand,
     container,
     content: {
@@ -84,8 +84,6 @@ function transformData(data) {
 const SingleProduct = (props) => {
   const product = transformData(props.data)
   const isLoading = false
-
-  console.log(product)
 
   return (
     <div>

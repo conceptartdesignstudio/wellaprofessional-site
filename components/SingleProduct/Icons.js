@@ -12,8 +12,6 @@ import { PpPoteSVG } from 'components/Icons/Products/PPPote'
 import { PpPoteTampaSVG } from 'components/Icons/Products/PPPoteTampa'
 
 export const Icons = ({ colors, icons }) => {
-  console.log(icons)
-
   return (
     <>
       <div className={styles.productIcons}>
