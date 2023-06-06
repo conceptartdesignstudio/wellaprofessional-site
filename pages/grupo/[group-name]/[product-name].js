@@ -51,7 +51,7 @@ const QUERY_GET_PRODUCT = gql`
         pead
         ppPote
         ppPoteTampa
-        ppTampa
+        pp
         productImage {
           mediaItemUrl
         }
@@ -133,7 +133,7 @@ function transformData(data) {
       dozeM: wellaProfessional?.products?.dozem,
       descartavel: wellaProfessional?.products?.descartavel,
       lixeira: wellaProfessional?.products.lixeira,
-      ppTampa: wellaProfessional?.products?.ppTampa,
+      ppTampa: wellaProfessional?.products?.pp,
       ppPote: wellaProfessional?.products?.ppPote,
       ppPoteTampa: wellaProfessional?.products?.ppPoteTampa,
       pead: wellaProfessional?.products?.pead,

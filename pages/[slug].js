@@ -64,7 +64,7 @@ function transformData(data) {
       dozeM: data?.products?.dozem,
       descartavel: data?.products?.descartavel,
       lixeira: data?.products?.lixeira,
-      ppTampa: data?.products?.ppTampa,
+      ppTampa: data?.products?.pp,
       ppPote: data?.products?.ppPote,
       ppPoteTampa: data?.products?.ppPoteTampa,
       pead: data?.products?.pead,
