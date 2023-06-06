@@ -10,6 +10,8 @@ Wella Professionals ([prowella.com.br](https://prowella.com.br))
 
 Wella Retails ([wellaretail.com.br](https://wellaretail.com.br))
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bffe5cbf-d17c-4f9f-b130-8053e74114ff/deploy-status)](https://app.netlify.com/sites/wella-retail/deploys)
+
 ## Built With
 
 - React (Next.js)
