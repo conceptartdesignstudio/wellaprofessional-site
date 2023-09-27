@@ -33,7 +33,7 @@ export const GroupProduct = (props) => {
               <h4 style={{ color: colors.textColor }}>
                 Ingredientes (português):
               </h4>
-              <p style={{ color: colors.textColor }}>{productResume}</p>
+              <p dangerouslySetInnerHTML={{ __html: productResume }} style={{ color: colors.textColor }} />
 
               <LearnLink
                 isGroup={true}
