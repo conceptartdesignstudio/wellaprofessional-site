@@ -36,13 +36,13 @@ export const ProductBrand = ({ brandName }) => {
       name: 'clinical',
       image: '/clinical-black.png',
       width: '200',
-      height: '42'
+      height: '80'
     },
     {
       name: 'clinical-white',
       image: '/clinical-white.png',
       width: '200',
-      height: '42'
+      height: '80'
     },
     {
       name: 'wedo',
