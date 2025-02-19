@@ -2,8 +2,6 @@ import Head from 'next/head'
 import { useQuery, gql } from '@apollo/client'
 import { useRouter } from 'next/router'
 
-import LottieView from 'lottie-react'
-import loadingData from '../../assets/lf20_wdljjitv.json'
 import styles from '../../styles/Product.module.css'
 import { GroupHeader } from 'components/SingleGroup/GroupHeader'
 import { GroupProduct } from 'components/SingleGroup/GroupProduct'
@@ -87,9 +85,7 @@ const SingleGroup = ({ isProductPage = true }) => {
     <div>
       {isLoading ? (
         <div className={`flex justify-center items-center`}>
-          <div className="w-[200px]">
-            <LottieView animationData={loadingData} />
-          </div>
+          <div className="w-[200px]"></div>
         </div>
       ) : (
         <div

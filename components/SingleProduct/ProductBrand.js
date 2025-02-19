@@ -28,15 +28,15 @@ export const ProductBrand = ({ brandName }) => {
     },
     {
       name: 'sebastian-new',
-      image: '/sebastian-new-black.png',
+      image: '/sebastian-25-black.png',
       width: '200',
-      height: '35'
+      height: '40'
     },
     {
       name: 'sebastian-new-white',
-      image: '/sebastian-new-white.png',
+      image: '/sebastian-25-white.png',
       width: '200',
-      height: '35'
+      height: '40'
     },
     {
       name: 'nioxin',

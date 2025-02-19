@@ -9,9 +9,6 @@ import { Youtube } from '../components/Icons/Youtube'
 
 import { getProductPage } from '../lib/api'
 
-import LottieView from 'lottie-react'
-import loadingData from '../assets/lf20_wdljjitv.json'
-
 function transformData(data) {
   const container = 'max-w-5xl'
 
@@ -90,7 +87,7 @@ const SingleProduct = (props) => {
       {isLoading ? (
         <div className={`flex justify-center items-center`}>
           <div className="w-[200px]">
-            <LottieView animationData={loadingData} />
+            {/* <LottieView animationData={loadingData} /> */}
           </div>
         </div>
       ) : (
