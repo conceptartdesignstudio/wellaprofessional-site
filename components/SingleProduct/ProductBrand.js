@@ -27,6 +27,18 @@ export const ProductBrand = ({ brandName }) => {
       height: '35'
     },
     {
+      name: 'sebastian-black-new',
+      image: '/sebastian-25-black.png',
+      width: '200',
+      height: '40'
+    },
+    {
+      name: 'sebastian-white-new',
+      image: '/sebastian-25-white.png',
+      width: '200',
+      height: '40'
+    },
+    {
       name: 'sebastian-new',
       image: '/sebastian-25-black.png',
       width: '200',
