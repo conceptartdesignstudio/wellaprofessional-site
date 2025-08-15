@@ -28,13 +28,13 @@ export const ProductBrand = ({ brandName }) => {
     },
     {
       name: 'sebastian-black-new',
-      image: '/sebastian-25-black.png',
+      image: '/sebastian-black-new.png',
       width: '200',
       height: '40'
     },
     {
       name: 'sebastian-white-new',
-      image: '/sebastian-25-white.png',
+      image: '/sebastian-white-new.png',
       width: '200',
       height: '40'
     },
