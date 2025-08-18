@@ -40,13 +40,13 @@ export const ProductBrand = ({ brandName }) => {
     },
     {
       name: 'sebastian-new',
-      image: '/sebastian-25-black.png',
+      image: '/sebastian-black-new.png',
       width: '200',
       height: '40'
     },
     {
       name: 'sebastian-new-white',
-      image: '/sebastian-25-white.png',
+      image: '/sebastian-white-new.png',
       width: '200',
       height: '40'
     },
